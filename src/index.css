@@ -1,0 +1,32 @@
+
+:root{
+    --White:#fff;
+    --Black:#000;
+    --PaleGray:#757575;
+    --Gradient:linear-gradient(to bottom, var(--Black) 80%, var(--PaleGray) 100%);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"JetBrains Mono",sans-serif;
+}
+
+#root{
+    width:100%;
+    height:100vh;
+}
+
+main{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5em;
+    border:1px solid red;
+}

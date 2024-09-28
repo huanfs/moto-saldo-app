@@ -1,0 +1,55 @@
+.container{
+    color:var(--White);
+    background:var(--Gradient);
+}
+.container header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5em;
+}
+.container header h1{
+    font-size:3em;
+    text-transform:uppercase;
+    font-family:"Jersey 25",serif;
+}
+.container header h2{
+    text-transform:capitalize;
+    font-size:1em;
+}
+.container .motorcycle{
+    min-width:260px;
+    min-height:180px;
+}
+.container section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5em;
+}
+.container section a{
+    text-decoration-line:none;
+}
+.container section button, .container section input{
+    width:260px;
+    height:45px;
+    text-transform:capitalize;
+    font-weight:700;
+    font-size:1.1em;
+    color:var(--White);
+    border:4px solid var(--White);
+    outline:0;
+    border-radius:10px;
+    padding:0.5em 0;
+    background-color:transparent;
+}
+.container section button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1em;
+}
+.container section a button svg{
+    width:30px;
+    height:30px;
+}
