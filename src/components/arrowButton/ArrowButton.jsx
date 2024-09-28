@@ -1,18 +1,20 @@
 import react from "react";
 
 /*icon-arrow*/
-import { FaArrowLeft } from "react-icons-fa";
-import { FaArrowRight } from "react-icons-fa";
+import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 /*icon-arrow*/
 
 import style from "./ArrowButton.module.css";
 
-export default function ArrowButton({direction}){
+function ArrowButton({direction}){
     return(
-        <button type="button">
+        <button type="button" className={style.arrow}>
             {
                 direction == "left" ? <FaArrowLeft/> : <FaArrowRight/>
             }
         </button>
     )
 }
+
+export default ArrowButton;

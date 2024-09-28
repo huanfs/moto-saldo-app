@@ -7,6 +7,7 @@ import { Globals } from "@context/context.jsx";    //****CONTEXT*/
 //****PAGES*/
 import HomePage from "@routes/HomePage.jsx";
 import Enter from "@routes/Enter.jsx";
+import Register from "@routes/Register.jsx";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ export function App(){
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/enter" element={<Enter/>}/>
+          <Route path="/register" element={<Register/>}/>
         </Routes>
       </BrowserRouter>
     </Globals>
