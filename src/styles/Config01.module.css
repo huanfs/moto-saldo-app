@@ -1,0 +1,55 @@
+.container{
+    color:var(--White);
+    background-color:var(--Black);
+}
+.container h1{
+    font-size:1.2em;
+    position:relative;
+    text-transform:capitalize;
+    bottom:3.5em;
+    right:3.5em;
+}
+.container h1 span{
+    text-decoration-line:underline;
+}
+.container article{
+    width:90%;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:1em;
+}
+.container article h2{
+    font-size:1em;
+}
+.container article article{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    overflow:scroll;
+    scrollbar-width:none;
+}
+.container section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2em;
+}
+.container section a{
+    text-decoration-line:none;
+}
+.container section input{
+    width:260px;
+    height:45px;
+    font-size:1.1em;
+    text-transform:capitalize;
+    font-weight:700;
+    border-radius:10px;
+    background-color:var(--White);
+    color:var(--Black);
+    border:none;
+    outline:0;
+}
+.container section p{
+    color:var(--White);
+}

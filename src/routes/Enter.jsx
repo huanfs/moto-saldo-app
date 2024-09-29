@@ -29,7 +29,7 @@ export default function Enter(){
                 </div>
             </form>
             <section>
-                <Link to=""><button type="button">entrar<FaArrowRight/></button></Link>
+                <Link to="/config01"><button type="button">entrar<FaArrowRight/></button></Link>
                 <Link to="/">esqueci a minha senha</Link>
             </section>
         </main>

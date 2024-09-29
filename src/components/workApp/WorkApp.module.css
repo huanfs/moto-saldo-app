@@ -1,0 +1,12 @@
+.application{
+    display:flex;
+    flex-direction:column;
+    gap:0.2em;
+    align-items:center;
+}
+.application img{
+    max-width:70px;
+    max-height:70px;
+    border:2px solid var(--White);
+    border-radius:5px;
+}
