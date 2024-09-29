@@ -1,16 +1,16 @@
 import React,{ useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; //* react router link component
 
-import { Context } from "@context/context.jsx";
+import { Context } from "@context/context.jsx";  //* import context
 
-import WorkApp from "@components/workApp/WorkApp.jsx";
+import WorkApp from "@components/workApp/WorkApp.jsx";  //* component
 
-import style from "@styles/Config01.module.css";
+import style from "@styles/Config01.module.css";  //* stylesheet
 
 export default function Config01(){
 
-    const Apps = useContext(Context);    //usando o contexto
+    const { userOptions, setUserOptions, logo } = useContext(Context);    //* using context
 
     return(
         <main className={style.container}>
@@ -19,9 +19,12 @@ export default function Config01(){
                 <h2>em quais aplicativos voce trabalha:</h2>
                     <article>
                         {
-                            Apps.logo.map((item, index)=>{
+                            logo.map((item, index)=>{
                                 return(
-                                    <WorkApp logotype={item.logotype} name={item.name} key={index}/>
+                                    <WorkApp 
+                                    logotype={item.logotype} 
+                                    name={item.name} 
+                                    key={index} />
                                 )
                             })
                         }

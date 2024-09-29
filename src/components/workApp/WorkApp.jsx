@@ -1,10 +1,22 @@
-import React from "react";
+import React,{ useContext, useEffect } from "react";
+
+import { Context } from "@context/context.jsx";  //* import context
 
 import style from "./WorkApp.module.css";
 
 export default function WorkApp({logotype, name}){
+
+    const { userOptions, setUserOptions } = useContext(Context);  //* using context
+
+    function AddApp(event){
+        const NewApp = event.target.parentElement.id;
+        setUserOptions((prevValue)=>({
+            ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
+        }))
+    }
+
     return(
-        <div className={style.application}>
+        <div className={style.application} id={name} onClick={AddApp}>
             <img src={logotype} alt={name}/>
             <span>{name}</span>
         </div>

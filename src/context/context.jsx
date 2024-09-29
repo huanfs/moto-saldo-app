@@ -16,7 +16,7 @@ export const Globals = ({ children }) => {
         "userName":"",
         "userPassword":"",
         "apps":[],
-        "goals":{                   //INFORMAÇÕES DO USUARIO
+        "goals":{                   //user info
             "money":"",
             "time":"",
         }
