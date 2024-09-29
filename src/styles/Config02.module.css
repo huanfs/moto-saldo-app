@@ -1,0 +1,29 @@
+.container{
+    background-color:var(--Black);
+    color:var(--White);
+}
+.container section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:3em;
+}
+.container section h2{
+    font-size:1em;
+    text-transform:capitalize;
+}
+.container section input{
+    width:80%;
+    font-size:2em;
+    font-weight:600px;
+    text-align:center;
+    padding-bottom:0.2em;
+    border:none;
+    outline:0;
+    background-color:transparent;
+    color:var(--White);
+    border-bottom:4px solid var(--White);
+}
+.container section:last-child{
+    flex-direction:row;
+}
