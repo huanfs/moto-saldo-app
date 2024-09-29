@@ -1,1 +1,1 @@
-criei a primeira página que e a HomePage que sera um fragmento com os componentes que compoem a página
+TERMINEI A TELA DE CONFIGURAÇÃO 2, INCLUINDO OS ESTILOS E FUNCIONALIDADES, AGHORA DEVO CRIAR A TELA 3 QUE DEFINE SE TRABALHA AOS FINAIS DE SEMANA OU NÃO

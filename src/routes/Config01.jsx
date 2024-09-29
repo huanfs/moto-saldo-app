@@ -31,7 +31,7 @@ export default function Config01(){
                     </article>
             </article>
             <section>
-                <Link to=""><input type="button" value="prosseguir"/></Link>
+                <Link to="/config02"><input type="button" value="prosseguir"/></Link>
                 <Link to=""><p>pular</p></Link>
             </section>
         </main>
