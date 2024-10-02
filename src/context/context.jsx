@@ -19,7 +19,8 @@ export const Globals = ({ children }) => {
         "goals":{                   //user info
             "money":"",
             "time":"",
-        }
+        },
+        "choice":null,
     });
 
     return(

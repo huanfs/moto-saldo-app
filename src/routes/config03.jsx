@@ -1,13 +1,16 @@
-import React from "react";
+import React,{ useContext } from "react";
 
 import { Link } from "react-router-dom";  //* Link component
 
-import ArrowButton from "@components/arrowButton/ArrowButton.jsx";  //* component
-import CheckBox from "@components/checkBox/CheckBox.jsx";  //* component
+/*components*/
+import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
+import CheckBox from "@components/checkBox/CheckBox.jsx"; 
+/*components*/ 
 
 import style from "@styles/Config03.module.css";  //* stylesheet
 
 export default function Config03(){
+
     return(
         <main className={style.container}>
             <h1>pretende trabalhar aos finais de semana</h1>
