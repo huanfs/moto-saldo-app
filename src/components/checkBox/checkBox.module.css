@@ -1,0 +1,16 @@
+.box{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:1em;
+}
+.box input{
+    -webkit-appearance: none;
+    min-width:40px;
+    min-height:40px;
+    border:4px solid var(--Black);
+    border-radius:5px;
+}
+.box input:checked{
+    background-color:var(--Black);
+}

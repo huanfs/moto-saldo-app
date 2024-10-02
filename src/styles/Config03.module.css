@@ -1,0 +1,27 @@
+.container{
+    color:var(--Black);
+    background-color:var(--White);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:0 1em;
+    border:4px solid var(--Black);
+}
+.container h1{
+    font-size:2em;
+    position:relative;
+    text-transform:capitalize;
+    text-align:center;
+    font-family:"Jersey 25", serif;
+}
+.container article{
+    display:flex;
+    flex-direction:column;
+    gap:1em;
+}
+.container section{
+    display:flex;
+    flex-direction:row;
+    gap:3em;
+}
