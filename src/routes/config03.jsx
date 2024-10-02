@@ -26,8 +26,8 @@ export default function Config03(){
                 box="04"/>
             </article>
             <section>
-                <ArrowButton direction="left"/>
-                <ArrowButton/>
+                <Link to="/config02"><ArrowButton direction="left"/></Link>
+                <Link to="/"><ArrowButton/></Link>
             </section>
         </main>
     )

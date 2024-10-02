@@ -40,7 +40,7 @@ export default function Config02(){
             </section>
             <section>
                 <Link to="/config01"><ArrowButton direction="left"/></Link>
-                <Link to="" onClick={AddGoals}><ArrowButton/></Link>
+                <Link to="/config03" onClick={AddGoals}><ArrowButton/></Link>
             </section>
         </main>
     )
