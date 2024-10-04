@@ -5,8 +5,10 @@
     align-items:center;
     justify-content:space-between;
     padding:0 1em;
-    /* border-bottom:4px solid var(--White); */
-    border-bottom:4px solid red;
+    border-bottom:4px solid var(--White);
+    color:var(--White);
+    position:absolute;
+    top:0;
 }
 .header svg{
     min-width:30px;

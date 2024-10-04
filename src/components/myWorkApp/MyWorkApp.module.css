@@ -1,0 +1,25 @@
+.container{
+    display:flex;
+    align-items:center;
+    gap:2em;
+    color:var(--White);
+}
+.container img{
+    max-width:80px;
+    border-radius:10px;
+    border:2px solid var(--White)
+}
+.container span{
+    font-size:2em;
+    font-weight:700;
+}
+.container button{
+    padding:1em;
+    border-radius:10px;
+    border:2px solid var(--White);
+    background-color:transparent;
+}
+.container button svg{
+    transform:scale(2,2);
+    color:var(--White);
+}
