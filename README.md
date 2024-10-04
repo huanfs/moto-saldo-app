@@ -1,1 +1,1 @@
-TERMINEI A TELA DE CONFIGURAÇÃO 2, INCLUINDO OS ESTILOS E FUNCIONALIDADES, AGHORA DEVO CRIAR A TELA 3 QUE DEFINE SE TRABALHA AOS FINAIS DE SEMANA OU NÃO 
+criei o componente header que tera o valor e tambem o icone de menu, criei tambem a rota "main" dentro da pasta routes, ainda não inseri os conteudos, os estilos nem as funcionalidades
