@@ -30,7 +30,7 @@ export default function Config03(){
             </article>
             <section>
                 <Link to="/config02"><ArrowButton direction="left"/></Link>
-                <Link to="/"><ArrowButton/></Link>
+                <Link to="/main"><ArrowButton/></Link>
             </section>
         </main>
     )
