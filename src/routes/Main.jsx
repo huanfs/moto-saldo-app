@@ -16,15 +16,17 @@ export default function Main(){
     return(
         <main className={style.container}>
             <Header/>
-            {
-                userOptions.apps.map((item, index)=>{
-                    return(
-                        <MyWorkApp 
-                        key={index}
-                        appLogo={item}/>
-                    )
-                })
-            }
+            <section>
+                {
+                    userOptions.apps.map((item, index)=>{
+                        return(
+                            <MyWorkApp 
+                            key={index}
+                            appLogo={item}/>
+                        )
+                    })
+                }
+            </section>
         </main>
     )
 }
