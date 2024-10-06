@@ -1,0 +1,26 @@
+.details{
+    width:100%;
+    color:var(--Black);
+    background-color:var(--White);
+    display:flex;
+    flex-direction:column;
+    gap:1.5em;
+    padding:4em 2em;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1;
+    border-radius:0px 0px 10px 10px;
+}
+.details div{
+    display:flex;
+    flex-direction:column;
+    gap:0.5em;
+}
+.details div p{
+    text-transform:capitalize;
+}
+.details div span{
+    font-size:1.5em;
+    font-weight:700;
+}
