@@ -1,3 +1,14 @@
 .container{
     background-color:var(--Black);
 }
+.container section{
+    width:90%;
+    max-height:400px;
+    display:flex;
+    flex-direction:column;
+    gap:2em;
+    overflow-y:scroll;
+}
+.container section::-webkit-scrollbar{
+    width:0;
+}

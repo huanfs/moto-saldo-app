@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import { IoMdMenu } from "react-icons/io"; //* REMOVI TEMPORARIAMENTE
-
 import TotalValue from "@components/header/totalValue/TotalValue.jsx";
 import BtnMenu from "@components/header/btnMenu/BtnMenu.jsx";
 import Details from "@components/header/details/Details.jsx";
