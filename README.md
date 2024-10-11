@@ -1,2 +1,1 @@
-preciso criar o botão que manda para a rota de detalhes do mês
-este botão vai ficar dentro do componente details que esta dentro de head
+agora preciso criar o componente de ir adicionando valores em cada um dos aplicativos
