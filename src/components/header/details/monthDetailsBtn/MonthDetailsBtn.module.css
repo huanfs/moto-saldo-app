@@ -1,0 +1,13 @@
+.btn{
+    max-width:200px;
+    padding:0.8em;
+    background-color:var(--Black);
+    color:var(--White);
+    font-weight:700;
+    text-transform:capitalize;
+    margin-left:50%;
+    transform:translate(-50%);
+    border:none;
+    outline:0;
+    border-radius:10px;
+}

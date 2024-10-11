@@ -1,5 +1,7 @@
 import React from "react";
 
+import MonthDetailsBtn from "@components/header/details/monthDetailsBtn/MonthDetailsBtn.jsx"; //* component
+
 import style from "./Details.module.css";
 
 function Details(){
@@ -21,6 +23,7 @@ function Details(){
                 <p>horas trabalhadas</p>
                 <span>00,00</span>
             </div>
+            <MonthDetailsBtn/>
         </article>
     )
 }
