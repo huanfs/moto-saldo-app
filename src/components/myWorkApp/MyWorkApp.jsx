@@ -1,8 +1,10 @@
-import React,{ useContext } from "react";
+import React,{ useContext, useState } from "react";
 
 import { Context } from "@context/Context.jsx";  //* import context
 
 import { CgMathPlus } from "react-icons/cg";  //* react-icon
+
+import AddValues from "@components/myWorkApp/addValues/AddValues.jsx"; //* component
 
 import style from "./MyWorkApp.module.css";  //* stylesheet
 
@@ -10,19 +12,24 @@ function MyWorkApp({appLogo}){
 
     const { logo } = useContext(Context); //* using context
 
-    let imagem = null 
+    let imagem = null //* this variable is used to storage the relative path from an work app image
 
     for( let item of logo){
-        item.name==appLogo?imagem=item.logotype:null;
+        item.name == appLogo ? imagem = item.logotype : null;
     }
+
+    const[addNewValue, setAddNewValue] = useState(false);
 
     return(
        <article className={style.container}>
         <img src={imagem?imagem:null}/>
         <span>99,99</span>
-        <button type="button">
+        <button type="button" onClick={()=>{setAddNewValue(true)}}>
             <CgMathPlus/>
         </button>
+        {
+            addNewValue && <AddValues close={setAddNewValue}/>
+        }
        </article>
     )
 }

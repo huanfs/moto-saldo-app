@@ -2,19 +2,22 @@ import React from "react";
 
 import style from "./AddValues.module.css";
 
-function AddValues(){
+function AddValues({ close }){
     return(
-        <section className={style.container}>
-            <img src=""/>
+        <article className={style.new}>
+            <img src="src/assets/images/uber-logo.png"/>
 
-            <input type="text"/>
-            <input type="text"/>
-            <input type="text"/>
-            <input type="text"/>
+            <input type="text" placeholder="ganhos"/>
+            <input type="text" placeholder="gastos"/>
+            <input type="text" placeholder="distancia"/>
+            <input type="text" placeholder="horas"/>
 
-            <input type="text"/>
-            <input type="button" value="adicionar"/>
-        </section>
+            <span>99,99</span>
+            <input 
+            type="button" 
+            value="adicionar"
+            onClick={()=>{close(false)}}/>
+        </article>
     )
 }
 
