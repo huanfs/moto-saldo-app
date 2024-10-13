@@ -28,7 +28,7 @@ function MyWorkApp({appLogo}){
             <CgMathPlus/>
         </button>
         {
-            addNewValue && <AddValues close={setAddNewValue}/>
+            addNewValue && <AddValues close={setAddNewValue} appImage={imagem}/>
         }
        </article>
     )

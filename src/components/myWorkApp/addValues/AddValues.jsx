@@ -2,10 +2,10 @@ import React from "react";
 
 import style from "./AddValues.module.css";
 
-function AddValues({ close }){
+function AddValues({ close, appImage }){
     return(
         <article className={style.new}>
-            <img src="src/assets/images/uber-logo.png"/>
+            <img src={appImage}/>
 
             <input type="text" placeholder="ganhos"/>
             <input type="text" placeholder="gastos"/>
