@@ -1,0 +1,10 @@
+.monthList{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:0.5em;
+    overflow-x:scroll;
+}
+.monthList::-webkit-scrollbar{
+    display:none;
+}
