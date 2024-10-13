@@ -20,17 +20,13 @@ function MonthList(){
         setMonths(monthsArray);
     },[])
 
-    useEffect(()=>{
-        console.log(months)
-    },[months])
-
     return(
         <nav className={style.monthList}>
             {
                 months && (
                     months.map((item, index)=>{
                         return(
-                            <MonthBtn monthNameShort={item}/>
+                            <MonthBtn monthNameShort={item} key={index}/>
                         )
                     })
                 ) 

@@ -1,0 +1,12 @@
+.dayBtn{
+    max-width:40px;
+    min-height:40px;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    border:none;
+    outline:0;
+    border-radius:5px;
+    color:var(--White);
+    background-color:var(--Black);
+}
