@@ -1,9 +1,13 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 /*components*/
     import MonthList from "@components/monthList/MonthList.jsx";
     import WeekList from "@components/weekList/WeekList.jsx";
     import DayList from "@components/dayList/DayList.jsx";
+    import DayDetails from "@components/dayDetails/DayDetails.jsx";
+    import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 /*components*/
 import style from "@styles/MonthStatistics.module.css";
 
@@ -11,10 +15,12 @@ function MonthStatistics(){
     return(
         <main className={style.container}>
             <h1>estatística mensal</h1>
-            <MonthList/>
             <section>
+                <MonthList/>
                 <WeekList/>
                 <DayList/>
+                <DayDetails/>
+                <Link to="/main"><ArrowButton direction="left"/></Link>
             </section>
         </main>
     )
