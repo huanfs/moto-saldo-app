@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 /*components*/
-import MonthBtn from "@components/monthList/monthBtn/MonthBtn.jsx"; 
+import MonthBtn from "@components/month/monthList/monthBtn/MonthBtn.jsx"; 
 /*components*/ 
 
 import style from "./MonthList.module.css";

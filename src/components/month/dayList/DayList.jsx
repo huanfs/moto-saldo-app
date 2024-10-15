@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 /*components*/
-    import DayBtn from "@components/dayList/dayBtn/DayBtn.jsx";
+    import DayBtn from "@components/month/dayList/dayBtn/DayBtn.jsx";
 /*components*/
 
 import style from "./DayList.module.css"; //* stylesheet

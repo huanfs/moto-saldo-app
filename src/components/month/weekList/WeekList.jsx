@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 /*components*/
-    import WeekBtn from "@components/weekList/weekBtn/WeekBtn.jsx";
+    import WeekBtn from "@components/month/weekList/weekBtn/WeekBtn.jsx";
 /*components*/
 import style from "./WeekList.module.css";
 
