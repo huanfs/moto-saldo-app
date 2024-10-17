@@ -58,7 +58,7 @@ export default function Enter(){
             </form>
             <section>
                 <button type="button" onClick={LogIn}>entrar<FaArrowRight/></button>
-                <Link to="/">esqueci a minha senha</Link>
+                <p onClick={()=>{navigateTo("/")}}>esqueci a minha senha</p>
             </section>
         </main>
     )
