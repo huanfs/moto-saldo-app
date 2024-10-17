@@ -31,7 +31,9 @@ export default function Enter(){
                 },
                 body:JSON.stringify(user),
                 mode:"cors",
-            }).then((response)=>{response.status==200? navigateTo("/config01"):null})
+            }).then((response)=>{
+                response.status == 200 ? navigateTo("/config01") : null;
+            })
         }
         catch (err) {
             console.log(err)
