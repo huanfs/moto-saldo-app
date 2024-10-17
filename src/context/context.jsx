@@ -1,4 +1,4 @@
-import React,{ createContext, useState } from "react";
+import React,{ createContext, useState, useEffect } from "react";
 
 export const Context = createContext();
 
@@ -22,6 +22,10 @@ export const Globals = ({ children }) => {
         },
         "choice":null,
     });
+
+    useEffect(()=>{
+        console.log(userOptions)
+    },[userOptions])
 
     return(
         <Context.Provider value={{
