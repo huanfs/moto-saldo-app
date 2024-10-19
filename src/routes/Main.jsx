@@ -11,7 +11,7 @@ import style from "@styles/Main.module.css";
 
 export default function Main(){
 
-    const { userOptions, logo } = useContext(Context);
+    const { userOptions } = useContext(Context);
 
     return(
         <main className={style.container}>

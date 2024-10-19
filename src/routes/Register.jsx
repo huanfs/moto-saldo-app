@@ -51,7 +51,7 @@ export default function Register(){
             headers:{
                 "Content-Type":"Application/json",
             },
-            body: JSON.stringify(data), //POR ENQUANTO, ir ao servidor
+            body: JSON.stringify(data),
         }).then((response)=>{response.status == 200 ? navigateTo("/enter") : console.log(response)})
         .catch(err=>{console.log(err)})
     }

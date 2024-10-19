@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
+
+import { Context } from "@context/Context.jsx"; //* import context
 
 import { useNavigate } from "react-router-dom"; //* import navigate hook
 
@@ -11,6 +13,8 @@ import { FaLock } from "react-icons/fa";
 import style from "@styles/Enter.module.css"; //* stylesheet
 
 export default function Enter(){
+
+    const { setUserOptions } = useContext(Context);
 
     const navigateTo = useNavigate(); // use navigate hook
 
@@ -32,7 +36,12 @@ export default function Enter(){
                 body:JSON.stringify(user),
                 mode:"cors",
             }).then((response)=>{
-                response.status == 200 ? navigateTo("/config01") : null;
+               if(response.status == 200){
+                setUserOptions((prevValue)=>({
+                    ...prevValue, userName: userName.current.value, userPassword: password.current.value,
+                }))
+                navigateTo("/config01")
+               }
             })
         }
         catch (err) {
