@@ -36,9 +36,25 @@ export default function Register(){
             setUserOptions((prevValue)=>({
                 ...prevValue, userName: NewUser, userPassword: NewPassword  //* this function adds userName and password in a object in context
             }))
-            console.log(userOptions);
-            navigateTo("/enter");  //* finally moves to enter.jsx for login
+            CreateUser(); //call function to create user
+            
         }
+    }
+
+    async function CreateUser(){  //* this function fetch data to /createUser route in API
+        const data = {
+            name: user.current.value,
+            password: password.current.value,
+        };
+
+        const create = await fetch("http://localhost:8182/createUser",{
+            method:"POST",
+            headers:{
+                "Content-Type":"Application/json",
+            },
+            body: JSON.stringify(data), //POR ENQUANTO, ir ao servidor
+        }).then((response)=>{navigateTo("/enter")})
+        .catch(err=>{console.log(err)})
     }
 
     return(
