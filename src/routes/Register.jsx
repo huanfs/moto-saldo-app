@@ -46,7 +46,6 @@ export default function Register(){
             name: user.current.value,
             password: password.current.value,
         };
-
         const create = await fetch("http://localhost:8182/createUser",{
             method:"POST",
             headers:{

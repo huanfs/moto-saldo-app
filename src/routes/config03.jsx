@@ -24,7 +24,6 @@ export default function Config03(){
             body:JSON.stringify(userOptions),
             mode:"cors",
         })
-        .then((response)=>{console.log(response)})
         .catch((err)=>{console.log(err)})
     }
 
