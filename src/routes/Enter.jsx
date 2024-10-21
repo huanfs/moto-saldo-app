@@ -37,12 +37,18 @@ export default function Enter(){
                 mode:"cors",
             })
             if(searchUser.status == 200){
+                const data = await searchUser.json()
                 setUserOptions((prevValue)=>({
                     ...prevValue, 
                     userName: userName.current.value, 
                     userPassword: password.current.value,
                 }))
-                navigateTo("/config01")
+                if(data.data){ // case old user (with data) proceed to /main
+                    navigateTo("/main")
+                }
+                else if(!data.data){ // else, if a new user (without data) proceed to *config01
+                    navigateTo("/config01")
+                }
             }
         }
         catch (err) {
@@ -76,21 +82,3 @@ export default function Enter(){
     )
 }
 
-// este componente de entrada é responsável pela autenticação do usuário
-// a função LogIn() é a responsável por armazenar os valores nos campos
-// de nome de usuario e senha através das suas respectivas referencias 
-//capturadas através do hook useRef do react.
-// então cria um objeto user que contém name e password recebendo os valores
-// das respectivas referências.
-// então executa um bloco try catch onde try faz uma requisição do tipo POST
-// para a rota /authenticate e envia o objeto user no corpo da requisição
-
-// a api recebe os valores e executa a consulta, se o usuário estiver no banco
-// retorna a mensagem de estatos 200 OK e então o hook useNavigate do react-router-dom
-// é executado direcionando imediatamente para a rota /main 
-
- /*
- são necessárias alterações com o direcionamento direto para MAIN onde se caso o usuário for novo
- (que será descoberto realizando busca para as outras tabelas) decide direcionar para as rotas de
- configuração ou não.
- */
