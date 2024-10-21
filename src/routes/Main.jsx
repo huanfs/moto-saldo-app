@@ -11,14 +11,14 @@ import style from "@styles/Main.module.css";
 
 export default function Main(){
 
-    const { userOptions } = useContext(Context);
+    const { userConfig } = useContext(Context);
 
     return(
         <main className={style.container}>
             <Header/>
             <section>
                 {
-                    userOptions.apps.map((item, index)=>{
+                    userConfig.apps.map((item, index)=>{
                         return(
                             <MyWorkApp 
                             key={index}

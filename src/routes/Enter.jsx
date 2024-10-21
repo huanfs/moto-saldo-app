@@ -14,7 +14,7 @@ import style from "@styles/Enter.module.css"; //* stylesheet
 
 export default function Enter(){
 
-    const { setUserOptions } = useContext(Context); // consuming context
+    const { setUserConfig } = useContext(Context); // consuming context
 
     const navigateTo = useNavigate(); // use navigate hook
 
@@ -38,7 +38,7 @@ export default function Enter(){
             })
             if(searchUser.status == 200){
                 const data = await searchUser.json()
-                setUserOptions((prevValue)=>({
+                setUserConfig((prevValue)=>({
                     ...prevValue, 
                     userName: userName.current.value, 
                     userPassword: password.current.value,

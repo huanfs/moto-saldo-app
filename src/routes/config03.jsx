@@ -13,7 +13,7 @@ import style from "@styles/Config03.module.css";  //* stylesheet
 
 export default function Config03(){
 
-    const { userOptions } = useContext(Context); //* using context
+    const { userConfig } = useContext(Context); //* using context
 
     async function SaveData(){
         const savingData = await fetch("http://localhost:8182/createOptions",{
@@ -21,7 +21,7 @@ export default function Config03(){
             headers:{
                 "Content-Type":"Application/json",
             },
-            body:JSON.stringify(userOptions),
+            body:JSON.stringify(userConfig),
             mode:"cors",
         })
         .catch((err)=>{console.log(err)})

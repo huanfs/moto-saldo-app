@@ -10,7 +10,7 @@ import style from "@styles/Register.module.css";  //STYLESHEET
 
 export default function Register(){
 
-    const { userOptions, setUserOptions } = useContext(Context);  //* using context
+    const { userConfig, setUserConfig } = useContext(Context);  //* using context
 
     const navigateTo = useNavigate();  //* useNavigate hook
 
@@ -33,7 +33,7 @@ export default function Register(){
         else{
             const NewUser = user.current.value;
             const NewPassword = password.current.value;
-            setUserOptions((prevValue)=>({
+            setUserConfig((prevValue)=>({
                 ...prevValue, userName: NewUser, userPassword: NewPassword  //* this function adds userName and password in a object in context
             }))
             CreateUser(); //call function to create user

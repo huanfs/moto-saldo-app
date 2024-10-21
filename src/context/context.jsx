@@ -12,7 +12,7 @@ export const Globals = ({ children }) => {
         {"logotype":"src/assets/images/mercadoenvios-logo.png", "name":"merado en."},
     ]
 
-    const[userOptions, setUserOptions] = useState({
+    const[userConfig, setUserConfig] = useState({
         "userName":"",
         "userPassword":"",
         "apps":[],
@@ -24,13 +24,13 @@ export const Globals = ({ children }) => {
     });
 
     useEffect(()=>{
-        console.log(userOptions)
-    },[userOptions])
+        console.log(userConfig)
+    },[userConfig])
 
     return(
         <Context.Provider value={{
-            userOptions,
-            setUserOptions,
+            userConfig,
+            setUserConfig,
             logo,
         }}>
             { children }

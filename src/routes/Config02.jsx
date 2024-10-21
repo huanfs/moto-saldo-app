@@ -10,7 +10,7 @@ import style from "@styles/Config02.module.css";  //* stylesheet
 
 export default function Config02(){
 
-    const { setUserOptions } = useContext(Context)  //* using context
+    const { setUserConfig } = useContext(Context)  //* using context
 
     const navigateTo = useNavigate();  //* navigate hook
 
@@ -20,7 +20,7 @@ export default function Config02(){
     function AddGoals(){
         const NewMoney = money.current.value;
         const NewHour = hours.current.value;
-        setUserOptions((prevValue => ({
+        setUserConfig((prevValue => ({
             ...prevValue, goals: {                              //* this function add goals of money and hours 
                 ...prevValue.goals, money: NewMoney, time: NewHour,
             }
