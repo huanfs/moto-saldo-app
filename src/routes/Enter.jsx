@@ -14,7 +14,7 @@ import style from "@styles/Enter.module.css"; //* stylesheet
 
 export default function Enter(){
 
-    const { setUserOptions } = useContext(Context);
+    const { setUserOptions } = useContext(Context); // consuming context
 
     const navigateTo = useNavigate(); // use navigate hook
 
@@ -35,17 +35,18 @@ export default function Enter(){
                 },
                 body:JSON.stringify(user),
                 mode:"cors",
-            }).then((response)=>{
-               if(response.status == 200){
+            })
+            if(searchUser.status == 200){
                 setUserOptions((prevValue)=>({
-                    ...prevValue, userName: userName.current.value, userPassword: password.current.value,
+                    ...prevValue, 
+                    userName: userName.current.value, 
+                    userPassword: password.current.value,
                 }))
                 navigateTo("/config01")
-               }
-            })
+            }
         }
         catch (err) {
-            console.log(err)
+            console.log("erro inesperado com a autenticação")
         }
     }
     return(
