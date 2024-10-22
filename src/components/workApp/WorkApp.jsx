@@ -6,11 +6,11 @@ import style from "./WorkApp.module.css";
 
 export default function WorkApp({logotype, name}){
 
-    const { userOptions, setUserOptions } = useContext(Context);  //* using context
+    const { userConfig, setUserConfig } = useContext(Context);  //* using context
 
     function AddApp(event){
         const NewApp = event.target.parentElement.id;
-        setUserOptions((prevValue)=>({
+        setUserConfig((prevValue)=>({
             ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
         }))
     }

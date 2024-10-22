@@ -6,10 +6,10 @@ import style from "./CheckBox.module.css";
 
 function CheckBox({ label, box }){
 
-    const { setUserOptions } = useContext(Context);
+    const { setUserConfig } = useContext(Context);
 
     function SetChoice(event){
-        setUserOptions((prevValue)=> ({
+        setUserConfig((prevValue)=> ({
             ...prevValue, choice: event.target.id
         }))
     }

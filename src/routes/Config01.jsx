@@ -10,7 +10,7 @@ import style from "@styles/Config01.module.css";  //* stylesheet
 
 export default function Config01(){
 
-    const { userOptions, setUserOptions, logo } = useContext(Context);    //* using context
+    const { userConfig, setUserConfig, logo } = useContext(Context);    //* using context
 
     return(
         <main className={style.container}>

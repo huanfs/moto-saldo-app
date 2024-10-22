@@ -1,4 +1,4 @@
-import React,{ createContext, useState } from "react";
+import React,{ createContext, useState, useEffect } from "react";
 
 export const Context = createContext();
 
@@ -12,7 +12,7 @@ export const Globals = ({ children }) => {
         {"logotype":"src/assets/images/mercadoenvios-logo.png", "name":"merado en."},
     ]
 
-    const[userOptions, setUserOptions] = useState({
+    const[userConfig, setUserConfig] = useState({
         "userName":"",
         "userPassword":"",
         "apps":[],
@@ -23,11 +23,15 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
+    useEffect(()=>{
+        console.log(userConfig);
+    },[userConfig])
+
     return(
         <Context.Provider value={{
-            userOptions,
-            setUserOptions,
             logo,
+            userConfig,
+            setUserConfig,
         }}>
             { children }
         </Context.Provider>

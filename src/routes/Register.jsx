@@ -10,7 +10,7 @@ import style from "@styles/Register.module.css";  //STYLESHEET
 
 export default function Register(){
 
-    const { userOptions, setUserOptions } = useContext(Context);  //* using context
+    const { userConfig, setUserConfig } = useContext(Context);  //* using context
 
     const navigateTo = useNavigate();  //* useNavigate hook
 
@@ -33,12 +33,27 @@ export default function Register(){
         else{
             const NewUser = user.current.value;
             const NewPassword = password.current.value;
-            setUserOptions((prevValue)=>({
+            setUserConfig((prevValue)=>({
                 ...prevValue, userName: NewUser, userPassword: NewPassword  //* this function adds userName and password in a object in context
             }))
-            console.log(userOptions);
-            navigateTo("/enter");  //* finally moves to enter.jsx for login
+            CreateUser(); //call function to create user
+            
         }
+    }
+
+    async function CreateUser(){  //* this function fetch data to /createUser route in API
+        const data = {
+            name: user.current.value,
+            password: password.current.value,
+        };
+        const create = await fetch("http://localhost:8182/createUser",{
+            method:"POST",
+            headers:{
+                "Content-Type":"Application/json",
+            },
+            body: JSON.stringify(data),
+        }).then((response)=>{response.status == 200 ? navigateTo("/enter") : console.log(response)})
+        .catch(err=>{console.log(err)})
     }
 
     return(

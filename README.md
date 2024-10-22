@@ -1,14 +1,4 @@
-em algum momento arrumar os códigos para ficar mais legivel
-criar apenas todas as funcionalidades e futuramente criar a api 
-e integração ao banco de dados
 
-mover os componentes:
+preciso realizar ajustes dentro da rota Main, apenas arrumar o código, tudo funciona bem
+preciso tambem arrumar a tabela. pois eu acho que dentro do array apps deverá ser um array de objetos onde cada app cadastrado terá valores de gastos e ganhos
 
-DayDetails
-DayList
-MonthList
-weekList
-
-para dentro de 
-
-month
