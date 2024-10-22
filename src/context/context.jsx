@@ -24,14 +24,14 @@ export const Globals = ({ children }) => {
     });
 
     useEffect(()=>{
-        console.log(userConfig)
+        console.log(userConfig);
     },[userConfig])
 
     return(
         <Context.Provider value={{
+            logo,
             userConfig,
             setUserConfig,
-            logo,
         }}>
             { children }
         </Context.Provider>
