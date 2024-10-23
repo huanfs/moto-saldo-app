@@ -8,10 +8,17 @@ export default function WorkApp({logotype, name}){
 
     const { userConfig, setUserConfig } = useContext(Context);  //* using context
 
+    // function AddApp(event){
+    //     const NewApp = event.target.parentElement.id;
+    //     setUserConfig((prevValue)=>({
+    //         ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
+    //     }))
+    // }
+
     function AddApp(event){
         const NewApp = event.target.parentElement.id;
         setUserConfig((prevValue)=>({
-            ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
+            ...prevValue, apps:[...prevValue.apps, {"appName":NewApp, "total":0}]
         }))
     }
 

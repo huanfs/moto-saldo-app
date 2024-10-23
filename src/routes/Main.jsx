@@ -10,7 +10,7 @@ import { Context } from "@context/Context.jsx";
 import style from "@styles/Main.module.css";
 
 export default function Main(){
-
+    
     const { userConfig } = useContext(Context); // using context
 
     const[userData, setUserData] = useState(localStorage.getItem("userData")); //* persistent state of userData
@@ -50,7 +50,7 @@ export default function Main(){
             const toObject = await JSON.parse(userData);
             setUserData(toObject)
         }
-        obj()
+        obj();
     })
 
 
@@ -63,13 +63,13 @@ export default function Main(){
                         return(
                             <MyWorkApp 
                             key={index}
-                            appLogo={item}/>
+                            appLogo={item.appName}/>
                         )
                     }) : userConfig.apps.map((item, index)=>{
                         return(
                             <MyWorkApp
                             key={index}
-                            appLogo={item}/>
+                            appLogo={item.appName}/>
                         )
                     })
                 }
