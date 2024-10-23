@@ -12,10 +12,11 @@ function MyWorkApp({appLogo}){
 
     const { logo } = useContext(Context); //* using context
 
-    let imagem = null //* this variable is used to storage the relative path from an work app image
+    let imagem; //* this variable is used to storage the relative path from an work app image
+    let appName;
 
     for( let item of logo){
-        item.name == appLogo ? imagem = item.logotype : null;
+        item.name == appLogo && ((imagem = item.logotype),(appName = item.name));
     }
 
     const[addNewValue, setAddNewValue] = useState(false);
@@ -28,7 +29,7 @@ function MyWorkApp({appLogo}){
             <CgMathPlus/>
         </button>
         {
-            addNewValue && <AddValues close={setAddNewValue} appImage={imagem}/>
+            addNewValue && <AddValues close={setAddNewValue} appImage={imagem} alt={appName}/>
         }
        </article>
     )

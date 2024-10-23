@@ -23,7 +23,14 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
+    const[userData, setUserData] = useState(localStorage.userData)
+
     useEffect(()=>{
+        const Object = async()=>{
+            const toObject = await JSON.parse(userData);
+            setUserData(toObject);
+        }
+        Object()
         console.log(userConfig);
     },[userConfig])
 
@@ -32,6 +39,8 @@ export const Globals = ({ children }) => {
             logo,
             userConfig,
             setUserConfig,
+            userData,
+            setUserData
         }}>
             { children }
         </Context.Provider>
