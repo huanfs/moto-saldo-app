@@ -18,7 +18,7 @@ export default function WorkApp({logotype, name}){
     function AddApp(event){
         const NewApp = event.target.parentElement.id;
         setUserConfig((prevValue)=>({
-            ...prevValue, apps:[...prevValue.apps, {"appName":NewApp, "total":0}]
+            ...prevValue, apps:[...prevValue.apps, {"appName":NewApp, "total":0, "distance":0, "time":0}]
         }))
     }
 
