@@ -32,6 +32,7 @@ function AddValues({ close, appImage, alt }){
                 return item;
             })
         }))
+        close(false)
     }
 
     //*aqui é apenas para visualizar o estado sendo alterado no console*//
@@ -66,9 +67,7 @@ function AddValues({ close, appImage, alt }){
 
             <input 
             type="button" 
-            value="adicionar"
-            onClick={()=>{close(false)}}/>
-            <button onClick={AddStatistics}>teste</button>
+            value="adicionar" onClick={AddStatistics}/>
         </article>
     )
 }
