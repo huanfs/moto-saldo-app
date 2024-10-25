@@ -23,7 +23,7 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
-    const[userData, setUserData] = useState(localStorage.userData)
+    const[userData, setUserData] = useState(localStorage.userData) 
 
     useEffect(()=>{
         const Object = async()=>{
@@ -31,7 +31,6 @@ export const Globals = ({ children }) => {
             setUserData(toObject);
         }
         Object()
-        console.log(userConfig);
     },[userConfig])
 
     return(
