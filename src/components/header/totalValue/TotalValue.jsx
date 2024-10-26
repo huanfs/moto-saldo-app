@@ -20,8 +20,6 @@ function TotalValue(){
             }
         }
         Calculate()
-        console.log(total)
-        console.log(userData.apps)
     },[userData])
 
     return(
