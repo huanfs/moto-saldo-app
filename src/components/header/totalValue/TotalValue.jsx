@@ -25,7 +25,7 @@ function TotalValue(){
     },[userData])
 
     return(
-        <h1>{total}</h1>
+        <h1 className={style.total}><span>R$</span> {total}</h1>
     )
 }
 

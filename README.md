@@ -13,3 +13,8 @@ monthList
 weekList
 
 e a rota monthStatistics
+
+
+preciso formatar melhor os valores inseridos no campo de dinheiro no componente AddValues
+para que os valores sejam tratados seja com ponto ou com virgula e a somatoria retorne um valor
+em formato de dinheiro
