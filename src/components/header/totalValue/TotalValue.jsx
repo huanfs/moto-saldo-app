@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 
-import style from "./TotalValue.module.css";
+import { Context } from "@context/Context.jsx"; //* import context
+
+import style from "./TotalValue.module.css"; //* stylesheet
 
 function TotalValue(){
+    const { userData } = useContext(Context); //* using context
+
+    const[total, setTotal] = useState(0);
+
+    useEffect(()=>{
+        const Calculate = async() =>{
+            let totalValue = 0;
+            if(typeof(userData) == "object"){
+                userData.apps.forEach(item=>{
+                    parseFloat(totalValue += item.total || 0)
+                });
+                setTotal(totalValue);
+            }
+        }
+        Calculate()
+        console.log(total)
+        console.log(userData.apps)
+    },[userData])
+
     return(
-        <h1>999,99</h1>
+        <h1>{total}</h1>
     )
 }
 

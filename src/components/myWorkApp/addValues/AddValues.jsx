@@ -1,4 +1,4 @@
-import React,{ useContext, useRef, useState, useEffect } from "react";
+import React,{ useContext, useRef, useState } from "react";
 
 import { Context } from "@context/Context.jsx"; //* import context
 
@@ -24,7 +24,7 @@ function AddValues({ close, appImage, alt }){
                 if(item.appName == appIcon.current.alt){
                     return{
                         ...item,
-                        total: item.total + Number(money.current.value),
+                        total: item.total + Number(money.current.value / 100),
                         distance: item.distance + Number(distance.current.value),
                         time: item.time + Number(time.current.value),
                     }
