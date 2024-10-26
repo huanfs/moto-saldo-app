@@ -2,7 +2,7 @@ import React,{ useContext, useRef, useState, useEffect } from "react";
 
 import { Context } from "@context/Context.jsx"; //* import context
 
-import style from "./AddValues.module.css";
+import style from "./AddValues.module.css"; //* stylesheet
 
 function AddValues({ close, appImage, alt }){
 
@@ -10,12 +10,12 @@ function AddValues({ close, appImage, alt }){
 
     const[value, setValue] = useState(0) //states for value in BRL format
 
-    /*references to input*/
+/*references to input*/
     const appIcon = useRef(null);
     const money = useRef(null);
     const distance = useRef(null);
     const time = useRef(null);
-    /*references to input*/
+/*references to input*/
 
     async function AddStatistics(){
         setUserData((prevValue)=>({
@@ -32,13 +32,8 @@ function AddValues({ close, appImage, alt }){
                 return item;
             })
         }))
-        close(false)
+        close(false) //* closes the component
     }
-
-    //*aqui é apenas para visualizar o estado sendo alterado no console*//
-    useEffect(()=>{
-        console.log(userData.apps)
-    },[userData])
 
     return(
         <article className={style.new}>
@@ -73,3 +68,9 @@ function AddValues({ close, appImage, alt }){
 }
 
 export default AddValues;
+
+
+/*
+    this component is responsible for save new money, distance and hours values in each
+    application option.
+*/

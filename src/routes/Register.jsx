@@ -10,7 +10,7 @@ import style from "@styles/Register.module.css";  //STYLESHEET
 
 export default function Register(){
 
-    const { userConfig, setUserConfig } = useContext(Context);  //* using context
+    const { setUserConfig } = useContext(Context);  //* using context
 
     const navigateTo = useNavigate();  //* useNavigate hook
 
@@ -70,3 +70,11 @@ export default function Register(){
         </main>
     )
 }
+
+/*
+    this route renders an formulary to create an user.
+    the 'Register' function will treat the user name and user password
+    and displays an error if it does not meet the requirements.
+    the 'CreateUser' function uses the values into input fields
+    and passes then from request body.
+*/

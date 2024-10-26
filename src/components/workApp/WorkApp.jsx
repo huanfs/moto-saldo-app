@@ -1,19 +1,12 @@
-import React,{ useContext, useEffect } from "react";
+import React,{ useContext } from "react";
 
 import { Context } from "@context/context.jsx";  //* import context
 
-import style from "./WorkApp.module.css";
+import style from "./WorkApp.module.css"; // stylesheet
 
 export default function WorkApp({logotype, name}){
 
-    const { userConfig, setUserConfig } = useContext(Context);  //* using context
-
-    // function AddApp(event){
-    //     const NewApp = event.target.parentElement.id;
-    //     setUserConfig((prevValue)=>({
-    //         ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
-    //     }))
-    // }
+    const { setUserConfig } = useContext(Context);  //* using context
 
     function AddApp(event){
         const NewApp = event.target.parentElement.id;
@@ -29,3 +22,13 @@ export default function WorkApp({logotype, name}){
         </div>
     )
 }
+
+/*  
+    this component import the atualization function 'setUserConfig'
+    from context.
+    this component receive 'LOGOTYPE' and 'NAME' from props.
+    the function AddApp catches the id of div element, (ID = 'NAME') and storages into
+    'setUserConfig'.
+    finally, render and DIV element and an IMG and SPAN element
+    as child.
+*/

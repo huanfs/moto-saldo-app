@@ -18,3 +18,9 @@ function ArrowButton({direction}){
 }
 
 export default ArrowButton;
+
+/*
+    this component render an button with an arrow icon inside him.
+    depending on 'DIRECTION' value, the arrow direction will be left or right.
+    also, this component is responsible for navigation between routes.
+*/

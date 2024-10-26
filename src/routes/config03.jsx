@@ -24,7 +24,7 @@ export default function Config03(){
             body:JSON.stringify(userConfig),
             mode:"cors",
         })
-        .catch((err)=>{console.log(err)})
+        .catch((err)=>{console.log("erro ao prosseguir " + err)})
     }
 
     return(
@@ -52,7 +52,8 @@ export default function Config03(){
     )
 }
 
-
-//esta rota é a responsável por concluir e salvar todas as configurações
-// a função SaveData() faz uma requisição do tipo POST e passa como corpo 
-// da requisição o estado userOptions convertido em uma string JSON
+/*
+    this route is responsible for finish all user configurations.
+    the 'SaveData' function fetches an type 'POST' and give to body the
+    state of 'userOptions' state in string format.
+*/

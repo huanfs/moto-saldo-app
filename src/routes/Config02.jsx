@@ -1,6 +1,6 @@
 import React,{ useContext, useRef } from "react";
 
-import { Link, useNavigate } from "react-router-dom";  //* react router link component
+import { Link } from "react-router-dom";  //* react router link component
 
 import { Context } from "@context/context.jsx";  //* import context
 
@@ -11,8 +11,6 @@ import style from "@styles/Config02.module.css";  //* stylesheet
 export default function Config02(){
 
     const { setUserConfig } = useContext(Context)  //* using context
-
-    const navigateTo = useNavigate();  //* navigate hook
 
     const money = useRef(null);
     const hours = useRef(null);
@@ -25,7 +23,6 @@ export default function Config02(){
                 ...prevValue.goals, money: NewMoney, time: NewHour,
             }
         })))
-        navigateTo("") ////////////////////////*****************AQUI*/
     }
 
     return(
@@ -45,3 +42,9 @@ export default function Config02(){
         </main>
     )
 }
+
+/*
+    this component receive the 'setUserConfig' from context.
+    the 'AddGoals' function the 'NewMoney' and 'NewHour' as a goals,
+    into the 'userConfig' state on context.
+*/

@@ -22,12 +22,11 @@ export default function Enter(){
     const password = useRef(null);
 
     async function LogIn(){
-        const user = {
-            name: userName.current.value,
-            password: password.current.value,
-        };
-
         try{
+            const user = {
+                name: userName.current.value,
+                password: password.current.value,
+            };
             const searchUser = await fetch("http://localhost:8182/authenticate",{
                 method:"POST",
                 headers:{
@@ -81,4 +80,12 @@ export default function Enter(){
         </main>
     )
 }
+
+/*
+    this route renders an LogIn formulary.
+    this route import 'setUserConfig' from context.
+    the 'LogIn' function try to search an user in database,
+    if user exists and 'data' have some value, procceed to 'main' route
+    else, proceed to 'config01' route to start account configuration
+*/
 

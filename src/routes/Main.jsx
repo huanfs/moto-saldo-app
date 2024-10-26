@@ -35,7 +35,6 @@ export default function Main(){
                     } else {
                         console.log("Usuário não encontrado ou erro no servidor");
                     }
-                    console.log(data)
                 } catch (err) {
                     console.log("Erro no front-end", err);
                 }
@@ -62,3 +61,15 @@ export default function Main(){
         </main>
     )
 }
+
+/*
+    this route receibe 'userData' from context.
+    (userData is an object extracted from localStorage).
+    userData refers to user table in database, with all configurations
+    inside him.
+    useEffect hook on this route search the user in database and then
+    receive the 'data' in string format and turns into an object
+    wisth 'JSON.parse()' method.
+    if all ok, saves the result in localStorage. (later, the context will treat this).
+    else show an error image on console.
+*/

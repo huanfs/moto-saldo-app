@@ -16,17 +16,17 @@ export const Globals = ({ children }) => {
         "userName":"",
         "userPassword":"",
         "apps":[],
-        "goals":{                   //user info
+        "goals":{                   //user configurations
             "money":"",
             "time":"",
         },
         "choice":null,
     });
 
-    const[userData, setUserData] = useState(localStorage.userData) 
+    const[userData, setUserData] = useState(localStorage.userData) // storages te userData received from a fetch in database
 
     useEffect(()=>{
-        const Object = async()=>{
+        const Object = async()=>{ // process the string userData into a object
             const toObject = await JSON.parse(userData);
             setUserData(toObject);
         }

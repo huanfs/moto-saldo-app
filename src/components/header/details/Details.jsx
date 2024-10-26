@@ -8,11 +8,7 @@ function Details(){
     return(
         <article className={style.details}>
             <div>
-                <p>ganhos totais do mês</p>
-                <span>00,00</span>
-            </div>
-            <div>
-                <p>combustível gasto</p>
+                <p>ganhos totais</p>
                 <span>00,00</span>
             </div>
             <div>

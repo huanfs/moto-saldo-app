@@ -10,7 +10,7 @@ import style from "@styles/Config01.module.css";  //* stylesheet
 
 export default function Config01(){
 
-    const { userConfig, setUserConfig, logo } = useContext(Context);    //* using context
+    const { logo } = useContext(Context);    //* using context
 
     return(
         <main className={style.container}>
@@ -37,3 +37,12 @@ export default function Config01(){
         </main>
     )
 }
+
+/* 
+    this route import 'LOGO' objecto from context
+    then. map 'LOGO' and render 'WorkApp' component
+    and give to him the following props:
+    LOGOTYPE: the relative path for an logo image
+    NAME: the name of application
+    key: the key fron every 'WorkApp' render
+*/

@@ -27,3 +27,8 @@ export default function HomePage(){
         </main>
     )
 }
+
+/*
+    this is a innitial route of application.
+    this component shows two button, for LogIn os SignUp.
+*/
