@@ -27,8 +27,10 @@ export const Globals = ({ children }) => {
 
     useEffect(()=>{
         const Object = async()=>{ // process the string userData into a object
-            const toObject = await JSON.parse(userData);
-            setUserData(toObject);
+            if(typeof(userData) == "string"){
+                const toObject = await JSON.parse(userData);
+                setUserData(toObject);
+            }
         }
         Object()
     },[userConfig])
