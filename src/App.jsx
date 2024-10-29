@@ -11,7 +11,6 @@ import Register from "@routes/Register.jsx";
 import Config01 from "@routes/Config01.jsx";
 import Config02 from "@routes/Config02.jsx";
 import Config03 from "@routes/Config03.jsx";
-import MonthStatistics from "@routes/MonthStatistics.jsx";
 
 import Main from "@routes/Main.jsx";
 
@@ -29,7 +28,6 @@ export function App(){
           <Route path="/config02" element={<Config02/>}/>
           <Route path="/config03" element={<Config03/>}/>
           <Route path="/main" element={<Main/>}/>
-          <Route path="/monthStatistics" element={<MonthStatistics/>}/>
         </Routes>
       </BrowserRouter>
     </Globals>
