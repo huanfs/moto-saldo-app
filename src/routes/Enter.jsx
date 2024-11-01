@@ -14,7 +14,7 @@ import style from "@styles/Enter.module.css"; //* stylesheet
 
 export default function Enter(){
 
-    const { setUserConfig } = useContext(Context); // consuming context
+    const { setUserData, setUserConfig } = useContext(Context); // consuming context
 
     const navigateTo = useNavigate(); // use navigate hook
 
@@ -43,6 +43,7 @@ export default function Enter(){
                     userPassword: password.current.value,
                 }))
                 if(data.data){ // case old user (with data) proceed to /main
+                    setUserData(JSON.parse(data.data))
                     navigateTo("/main")
                 }
                 else if(!data.data){ // else, if a new user (without data) proceed to *config01
