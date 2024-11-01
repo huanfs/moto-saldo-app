@@ -43,7 +43,7 @@ export default function Main(){
                         },
                         body: JSON.stringify(data),
                     });
-                    if (response.status === 200) {
+                    if (response.status === 200) { 
                         const result = await response.json(); // Convertendo a resposta em JSON
                         sessionStorage.setItem("userData", result.data); //salvando no localStorage
                     } else {
