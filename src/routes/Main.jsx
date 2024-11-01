@@ -11,17 +11,31 @@ import style from "@styles/Main.module.css";
 
 export default function Main(){
     
-    const { userData } = useContext(Context); // using context
+    const { userData, userConfig } = useContext(Context); // using context
+
+    const[data, setData] = React.useState();
 
 
     useEffect(() => {
         const fetchData = async () => {
             if(userData && userData.userName && userData.userPassword){
                 try {
-                    const data = {
-                        name: userData.userName,
-                        password: userData.userPassword
-                    };
+                    if(userConfig?.userName && userConfig?.userPassword){
+                        setData(
+                            {
+                                name: userConfig.userName,
+                                password: userConfig.userPassword
+                            }
+                        ) 
+                    }
+                    else if(userData?.userName && userData?.userPassword){
+                        setData(
+                            {
+                                name: userData.userName,
+                                password: userData.userPassword
+                            }
+                        )
+                    }
                     const response = await fetch("http://localhost:8182/getData", {
                         method: "POST",
                         headers: {
@@ -31,7 +45,7 @@ export default function Main(){
                     });
                     if (response.status === 200) {
                         const result = await response.json(); // Convertendo a resposta em JSON
-                        localStorage.setItem("userData", result.data); //salvando no localStorage
+                        sessionStorage.setItem("userData", result.data); //salvando no localStorage
                     } else {
                         console.log("Usuário não encontrado ou erro no servidor");
                     }
@@ -41,7 +55,7 @@ export default function Main(){
             }
         };
         fetchData();
-    }, [userData]);
+    }, [userData, userConfig]);
 
 
     return(

@@ -23,7 +23,7 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
-    const[userData, setUserData] = useState(localStorage.userData) // storages te userData received from a fetch in database
+    const[userData, setUserData] = useState(sessionStorage.userData) // storages te userData received from a fetch in database
 
     useEffect(()=>{
         const Object = async()=>{ // process the string userData into a object
