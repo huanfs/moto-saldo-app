@@ -23,17 +23,32 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
-    const[userData, setUserData] = useState(sessionStorage.userData) // storages te userData received from a fetch in database
+    const [userData, setUserData] = useState(() => {
+        const storedData = sessionStorage.getItem("userData");
+        return storedData ? JSON.parse(storedData) : userConfig;
+    });
+
+    useEffect(() => {
+        if (userData) {
+            sessionStorage.setItem("userData", JSON.stringify(userData));
+        } else {
+            sessionStorage.removeItem("userData"); // Limpa se `userData` for null
+        }
+    }, [userData]);
+
+    // useEffect(()=>{
+    //     const Object = async()=>{ // process the string userData into a object
+    //         if(typeof(userData) == "string"){
+    //             const toObject = await JSON.parse(userData);
+    //             setUserData(toObject);
+    //         }
+    //     }
+    //     Object()
+    // },[userData, userConfig])
 
     useEffect(()=>{
-        const Object = async()=>{ // process the string userData into a object
-            if(typeof(userData) == "string"){
-                const toObject = await JSON.parse(userData);
-                setUserData(toObject);
-            }
-        }
-        Object()
-    },[userConfig])
+        console.log(userData)
+    })
 
     return(
         <Context.Provider value={{
