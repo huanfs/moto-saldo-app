@@ -11,40 +11,39 @@ import style from "@styles/Main.module.css";
 
 export default function Main(){
     
-    const { userData, userConfig } = useContext(Context); // using context
+    const { userData, setUserData, userConfig } = useContext(Context); // using context
 
     const[data, setData] = React.useState();
 
-
     useEffect(() => {
+        let dataPayLoad = {};
         const fetchData = async () => {
-            if(userData && userData.userName && userData.userPassword){
+            if(userData || userConfig){
                 try {
-                    if(userConfig?.userName && userConfig?.userPassword){
-                        setData(
-                            {
+                        if(userConfig?.userName && userConfig?.userPassword){
+                            dataPayLoad = {
                                 name: userConfig.userName,
-                                password: userConfig.userPassword
+                                password: userConfig.userPassword,
                             }
-                        ) 
-                    }
-                    else if(userData?.userName && userData?.userPassword){
-                        setData(
-                            {
+                        }
+                        else if(userData?.userName && userData?.userPassword){
+                            dataPayLoad = {
                                 name: userData.userName,
-                                password: userData.userPassword
+                                password: userData.userPassword,
                             }
-                        )
-                    }
+                        }
+                        console.log(dataPayLoad)
+
                     const response = await fetch("http://localhost:8182/getData", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify(data),
+                        body: JSON.stringify(dataPayLoad),
                     });
                     if (response.status === 200) { 
                         const result = await response.json(); // Convertendo a resposta em JSON
+                        setUserData(JSON.parse(result.data))
                         sessionStorage.setItem("userData", result.data); //salvando no localStorage
                     } else {
                         console.log("Usuário não encontrado ou erro no servidor");
@@ -55,7 +54,8 @@ export default function Main(){
             }
         };
         fetchData();
-    }, [userData, userConfig]);
+        console.log(dataPayLoad)
+    }, [setUserData]);
 
 
     return(
