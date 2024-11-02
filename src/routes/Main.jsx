@@ -32,7 +32,6 @@ export default function Main(){
                                 password: userData.userPassword,
                             }
                         }
-                        console.log(dataPayLoad)
 
                     const response = await fetch("http://localhost:8182/getData", {
                         method: "POST",
@@ -54,7 +53,6 @@ export default function Main(){
             }
         };
         fetchData();
-        console.log(dataPayLoad)
     }, [setUserData]);
 
 
