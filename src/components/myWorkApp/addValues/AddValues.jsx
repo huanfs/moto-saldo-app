@@ -12,7 +12,12 @@ function AddValues({ close, appImage, alt }){
 
     const[isDisabled, setIsDisabled] = useState(true); //controls the action button
 
-    const[value, setValue] = useState(0) //states for value in BRL format
+    const[addNewValues , setAddNewValues] = useState({
+        "app":alt,
+        "money":0,
+        "distance":0,
+        "time":0
+    })
 
 /*references to input*/
     const appIcon = useRef(null);
@@ -33,9 +38,9 @@ async function AddStatistics() {
                 if (item.appName === appIcon.current.alt) {
                     return {
                         ...item,
-                        total: item.total + Number(money.current.value) / 100,
-                        distance: item.distance + Number(distance.current.value),
-                        time: item.time + Number(time.current.value),
+                        total: Number(item.total) + (addNewValues.money),
+                        distance: parseFloat(item.distance) + (addNewValues.distance),
+                        time: item.time + addNewValues.time,
                     };
                 }
                 return item;
@@ -68,6 +73,10 @@ useEffect(() => {
     };
 }, []);
 
+useEffect(()=>{
+    console.log(addNewValues)
+})
+
     return(
         <article className={style.new}> 
             <button 
@@ -83,21 +92,59 @@ useEffect(() => {
             ref={money}
             type="text" 
             placeholder="ganhos" 
+            maxLength="8"
             onChange={((event)=>{
-                setValue(Intl.NumberFormat('pt-br').format(event.target.value.replace(/\D/g,'') / 100))
+                //setValue(Intl.NumberFormat('pt-br').format(event.target.value.replace(/\D/g,'') / 100))
+                let money = event.target.value.replace(/\D/g, '');
+                if(money.length > 2){
+                    money = money.slice(0, 2) + "," + money.slice(2, 4);
+                }
+                event.target.value = money;
+
+                setAddNewValues((prevValue)=>({
+                    ...prevValue,
+                    money:parseFloat(money.replace(",","."))
+                }))
             })}/>
 
             <input 
             ref={distance} 
             type="text" 
-            placeholder="KM/percorridos"/>
+            maxLength="4"
+            placeholder="KM/percorridos"
+            onChange={(event)=>{
+                let distance = event.target.value.replace(/\D/g,'');
+                if(distance.length > 2){
+                    distance = distance.slice(0, 2) + "." + distance.slice(2, 3)
+                }
+                event.target.value = distance;
+                setAddNewValues((prevValue)=>({
+                    ...prevValue,
+                    distance:parseFloat(distance)
+                }))
+            }}/>
 
             <input ref={time} 
             type="text" 
-            placeholder="horas/minutos gastos"/>
+            maxLength="5"
+            placeholder="horas/minutos gastos"
+            onChange={(event)=>{
+                let time = event.target.value.replace(/\D/g,'');
+                if(time.length > 2){
+                    time = time.slice(0, 2) + ":" + time.slice(2, 4)
+                }
+                event.target.value = time
+
+                setAddNewValues((prevValue)=>({
+                    ...prevValue,
+                    time:parseFloat(time.replace(":","."))
+                }))
+            }}/>
 
             <span>
-                {value ? value : "00,00"}
+                {
+                    money.current && money.current.value ? money.current.value : "00,00"
+                }
             </span>
 
             <input 
