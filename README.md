@@ -1,1 +1,3 @@
-adicionar o tratamento de dados das informações inseridas tanto nas configurações quanto na aplicação principal
+documentar cada componente e rota, ou criando arquivos readme 
+separados para cada componente ou inserindo informações em linhas 
+comentadas ao final do componente

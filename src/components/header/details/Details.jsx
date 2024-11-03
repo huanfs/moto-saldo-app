@@ -8,7 +8,7 @@ function Details(){
 
     const { userData } = useContext( Context ) // utilização do contexto
 
-    const[details, setDetails] = useState({
+    const[details, setDetails] = useState({ // estado que armazena o total de tempo distancia e ganhos
         "total":0,
         "distance":0,
         "time":0
@@ -46,7 +46,6 @@ function Details(){
                     {
                         details.distance != 0 ? details.distance : "00.0"
                     }
-
                 </span>
             </div>
             <div>

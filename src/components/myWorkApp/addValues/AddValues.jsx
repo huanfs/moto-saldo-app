@@ -1,30 +1,30 @@
 import React,{ useContext, useRef, useState, useEffect } from "react";
 
-import { Context } from "@context/Context.jsx"; //* import context
+import { Context } from "@context/Context.jsx"; //  importação do contexto
 
-import { IoMdClose } from "react-icons/io"; // react icon
+import { IoMdClose } from "react-icons/io"; // react-icon
 
-import style from "./AddValues.module.css"; //* stylesheet
+import style from "./AddValues.module.css"; // estilização 
 
 function AddValues({ close, appImage, alt }){
 
-    const { setUserData } = useContext(Context); // using context
+    const { setUserData } = useContext(Context); // utilização do contexto
 
-    const[isDisabled, setIsDisabled] = useState(true); //controls the action button
+    const[isDisabled, setIsDisabled] = useState(true); //estado que controla a tivação e desativação do botão de adicionar valores
 
-    const[addNewValues , setAddNewValues] = useState({
+    const[addNewValues , setAddNewValues] = useState({ // estado que armazena os valores inseridos no componente para os campos de: "money", "disdtance", "time" e o nome do aplicativo "app"
         "app":alt,
         "money":0,
         "distance":0,
         "time":0
     })
 
-/*references to input*/
+/*referências aos elementos do tipo 'input'*/
     const appIcon = useRef(null);
     const money = useRef(null);
     const distance = useRef(null);
     const time = useRef(null);
-/*references to input*/
+/*referências aos elementos do tipo 'input'*/
 
 async function AddStatistics() {
     if (
@@ -47,7 +47,7 @@ async function AddStatistics() {
             })
         }));
         close(false); // Fecha o componente
-        setIsDisabled(!isDisabled); //trurns off the action button
+        setIsDisabled(!isDisabled); //desativa o botão de adicionar valores
     }
 }
 
@@ -73,17 +73,13 @@ useEffect(() => {
     };
 }, []);
 
-useEffect(()=>{
-    console.log(addNewValues)
-})
-
     return(
         <article className={style.new}> 
             <button 
             type="button"
             className={style.close}
             onClick={()=>{close(false)}}>
-                <IoMdClose/>
+                <IoMdClose/> 
             </button>
 
             <img ref={appIcon} src={appImage} alt={alt}/>
@@ -94,7 +90,6 @@ useEffect(()=>{
             placeholder="ganhos" 
             maxLength="8"
             onChange={((event)=>{
-                //setValue(Intl.NumberFormat('pt-br').format(event.target.value.replace(/\D/g,'') / 100))
                 let money = event.target.value.replace(/\D/g, '');
                 if(money.length > 2){
                     money = money.slice(0, 2) + "," + money.slice(2, 4);
@@ -160,7 +155,38 @@ useEffect(()=>{
 export default AddValues;
 
 
-/*
-    this component is responsible for save new money, distance and hours values in each
-    application option.
+/*  
+    29 - funcionalidade do componente  'AddStatistics()'.
+
+    30
+    -> - checa se os campos de cada elemento input possui algum valor válido dentro deles
+    34
+
+    35   utiliza a funcação atualizadora de estado importada do contexto para mapear o array 'apps' cuja propriedade
+    -> - 'appName' seja igual ao atributo 'alt' (recebido por 'props') da imagem referenciada por  'appIcon', então
+    -> - insere nos campos 'total','distance' e 'time' a soma dos valores pré existentes no estado com os valores inseridos
+    48   no estado 'addNewValues'.
+
+    54   useEffect que verifica se existem valores válidos nos campos dos inputs para então inverter o valor booleano
+    -> - no estado 'isDisabled' ativando então o botão.
+    61
+
+
+    82 - icone de 'X' importado do react-icons dentro de um botão que usa a função de atualização de estado
+         recebida por 'props' do componente 'MyWorkApps.jsx' para 'false'. 
+
+    85 - uma imagem que recebe no atributo 'src' o caminho relativo a uma imagem do aplicativo selecionado
+         recebido através de 'props' do componente 'MyWorkApp.jsx'. 
+    
+    92   função que formata os valores inseridos no input removendo caracteres não numéricos e insere dinâmicamente
+    -> - uma vírgula se o número de caracteres numéricos digitados for superior a 2, por fim. atualiza o estado
+    102  'AddNewValues' com o valor inserido transformado em um número decimal e subistituindo a ',' por '.' ao salvar.
+
+    110  função atribuída ao input que tem por objetivo formatar os valores inseridos no campo removendo caracteres não
+    -> - numéricos e inserindo um '.' caso o número de caracteres inseridos dentro do input seja maior que 2, por fim.
+    119  atualiza o estado AddNewValues com o valor inserido transformado em número decimal.
+
+    126  funcão atribuída ao input que tem por objetivo tratar os valores inseridos, removendo quaisquer caracteres não
+    -> - numéricos e inserindo um ':' caso o número de caracteres inseridos seja mair que 2, por fim, salva dentro do estado
+    136  'AddNewValues' o valor inserido subistituindo o ':' por '.' e trtansformando-o em numero decimal.  
 */
