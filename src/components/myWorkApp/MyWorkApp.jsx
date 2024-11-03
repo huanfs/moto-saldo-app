@@ -1,30 +1,43 @@
-import React,{ useContext, useState } from "react";
+import React,{ useContext, useState, useEffect } from "react";
 
-import { Context } from "@context/Context.jsx";  //* import context
+import { Context } from "@context/Context.jsx";  // importação do contexto
 
-import { CgMathPlus } from "react-icons/cg";  //* react-icon
+import { CgMathPlus } from "react-icons/cg";  // react-icon
 
-import AddValues from "@components/myWorkApp/addValues/AddValues.jsx"; //* component
+import AddValues from "@components/myWorkApp/addValues/AddValues.jsx"; // componente
 
-import style from "./MyWorkApp.module.css";  //* stylesheet
+import style from "./MyWorkApp.module.css";  // estilização
 
 function MyWorkApp({appLogo}){
 
-    const { logo } = useContext(Context); //* using context
+    const { logo, userData } = useContext(Context); // utilização do contexto
 
-    let imagem; //* this variable is used to storage the relative path from an work app image
-    let appName;
+    const[addNewValue, setAddNewValue] = useState(false); // estado que controla a abertura do componente AddValues.jsx
+
+    const[total, setTotal] = useState(0); // estado que armazena o valor total de cada aplicativo
+
+    let imagem; // essa variável vai armazenar o caminho relativo para a imagem do aplicativo
+    let appName; // essa varável vai armazenar o nome do aplicativo
 
     for( let item of logo){
         item.name == appLogo && ((imagem = item.logotype),(appName = item.name));
     }
 
-    const[addNewValue, setAddNewValue] = useState(false);
+    useEffect(() => { // aqui eu verifico dentro do estado userData.apps os aplicativos que correspondam
+        const appData = userData.apps.find(value => value.appName === appName); //ao valor de appName (que armazena do objeto 'logo' um nome de app)
+        if (appData) { // então defino o valot de total contido no estado userData dentro do estado total
+            setTotal(appData.total);
+        }
+    }, [userData, appName]);
 
     return(
        <article className={style.container}>
-        <img src={imagem?imagem:null}/>
-        <span>99,99</span>
+        <img src={imagem ? imagem : null}/>
+        <span>
+            {
+                total
+            }
+        </span>
         <button type="button" onClick={()=>{setAddNewValue(true)}}>
             <CgMathPlus/>
         </button>
