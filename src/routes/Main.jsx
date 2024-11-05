@@ -16,7 +16,13 @@ export default function Main(){
     useEffect(() => {
         let dataPayLoad = {};
         const fetchData = async () => {
-            if(userData || userConfig){
+            const storedData = sessionStorage.getItem("userData");
+
+            if(storedData){
+                setUserData(JSON.parse(storedData));
+            }
+
+            else if(userData || userConfig){
                 try {
                         if(userConfig?.userName && userConfig?.userPassword){
                             dataPayLoad = {
