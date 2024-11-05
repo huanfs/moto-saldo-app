@@ -8,7 +8,7 @@ import style from "./AddValues.module.css"; // estilização
 
 function AddValues({ close, appImage, alt }){
 
-    const { setUserData } = useContext(Context); // utilização do contexto
+    const { userData, setUserData } = useContext(Context); // utilização do contexto
 
     const[isDisabled, setIsDisabled] = useState(true); //estado que controla a tivação e desativação do botão de adicionar valores
 
@@ -49,6 +49,7 @@ async function AddStatistics() {
         close(false); // Fecha o componente
         setIsDisabled(!isDisabled); //desativa o botão de adicionar valores
     }
+    updateData();
 }
 
 useEffect(() => {
@@ -72,6 +73,34 @@ useEffect(() => {
         time.current?.removeEventListener("input", checkFields);
     };
 }, []);
+
+
+async function updateData() {
+    const user = {
+        name: userData.userName,
+        password: userData.userPassword,
+        data: JSON.parse(sessionStorage.getItem("userData")),
+    };
+
+    try {
+        const response = await fetch("http://localhost:8182/updateData", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
+
+        if (response.status == 200) {
+            console.log("Dados atualizados com sucesso!");
+        } else {
+            console.error("Erro ao atualizar dados: " + response.status);
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+    console.log(user);
+}
 
     return(
         <article className={style.new}> 
