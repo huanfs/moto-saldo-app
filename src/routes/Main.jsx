@@ -17,11 +17,9 @@ export default function Main(){
         let dataPayLoad = {};
         const fetchData = async () => {
             const storedData = sessionStorage.getItem("userData");
-
             if(storedData){
                 setUserData(JSON.parse(storedData));
             }
-
             else if(userData || userConfig){
                 try {
                         if(userConfig?.userName && userConfig?.userPassword){

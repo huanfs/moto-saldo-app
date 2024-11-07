@@ -1,26 +1,27 @@
 import React, { useRef, useContext } from "react";
 
-import { Context } from "@context/Context.jsx"; //* import context
+import { Context } from "@context/Context.jsx";
 
-import { useNavigate } from "react-router-dom"; //* import navigate hook
+import { useNavigate } from "react-router-dom";
 
-/* react-icons */
 import { FaArrowRight } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-/* react-icons */
 
-import style from "@styles/Enter.module.css"; //* stylesheet
+import style from "@styles/Enter.module.css";
 
 export default function Enter(){
 
-    const { setUserData, setUserConfig } = useContext(Context); // consuming context
+    const { setUserData, setUserConfig } = useContext(Context);
 
-    const navigateTo = useNavigate(); // use navigate hook
+    const navigateTo = useNavigate();
 
-    const userName = useRef(null); // references to inputs
+    const userName = useRef(null);
     const password = useRef(null);
 
+    /*
+    REALIZA A AUTENTICAÇÃO DO USUÁRIO
+    */
     async function LogIn(){
         try{
             const user = {
@@ -42,11 +43,11 @@ export default function Enter(){
                     userName: userName.current.value, 
                     userPassword: password.current.value,
                 }))
-                if(data.data){ // case old user (with data) proceed to /main
+                if(data.data){ //caso o usuário já seja cadastrado, recebe e salva seus dados no estadoUserData e navega para a página Main.jsx
                     setUserData(JSON.parse(data.data))
                     navigateTo("/main")
                 }
-                else if(!data.data){ // else, if a new user (without data) proceed to *config01
+                else if(!data.data){ // caso o usuário seja novo, procede para a página config01.jsx para iniciar configurações de conta
                     navigateTo("/config01")
                 }
             }
@@ -82,11 +83,4 @@ export default function Enter(){
     )
 }
 
-/*
-    this route renders an LogIn formulary.
-    this route import 'setUserConfig' from context.
-    the 'LogIn' function try to search an user in database,
-    if user exists and 'data' have some value, procceed to 'main' route
-    else, proceed to 'config01' route to start account configuration
-*/
 

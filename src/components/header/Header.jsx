@@ -24,9 +24,3 @@ function Header(){
 }
 
 export default Header;
-
-/*
-    this component renders an head for application responsible to
-    shows 'TotalValue' component and an 'BtnMenu' hamburg icon.
-    the 'openMenu' state receive an boolean value to open or close 'Details' component.
-*/

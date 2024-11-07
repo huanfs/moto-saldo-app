@@ -23,8 +23,3 @@ function BtnMenu({ option, action }){
 }
 
 export default BtnMenu;
-
-/*
-    this component receive 'ACTION' and 'OPTIONS' props to close this component
-    depending the state of 'OPTION' renders an different icon for open or closed menu.
-*/

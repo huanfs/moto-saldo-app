@@ -1,31 +1,46 @@
 import React,{ useContext, useRef, useState, useEffect } from "react";
 
-import { Context } from "@context/Context.jsx"; //  importação do contexto
+import { Context } from "@context/Context.jsx";
 
-import { IoMdClose } from "react-icons/io"; // react-icon
+import { IoMdClose } from "react-icons/io"; 
 
-import style from "./AddValues.module.css"; // estilização 
+import style from "./AddValues.module.css";
 
 function AddValues({ close, appImage, alt }){
 
-    const { userData, setUserData } = useContext(Context); // utilização do contexto
+    const { userData, setUserData } = useContext(Context);
 
-    const[isDisabled, setIsDisabled] = useState(true); //estado que controla a tivação e desativação do botão de adicionar valores
+    const[btnIsDisabled, setBtnIsDisabled] = useState(true);
 
-    const[addNewValues , setAddNewValues] = useState({ // estado que armazena os valores inseridos no componente para os campos de: "money", "disdtance", "time" e o nome do aplicativo "app"
+/*
+    ESTADO QUE ARMAZENA OS VALORES INSERIDOS NOS INPUTS DESTE COMPONENTE
+    E O CAMINHO RELATIVO A UMA IMAGEM DE APLICATIVO RECEBIDA COMO PROPRIE
+    -DADE
+*/
+    const[addNewValues , setAddNewValues] = useState({ 
         "app":alt,
         "money":0,
         "distance":0,
         "time":0
     })
 
-/*referências aos elementos do tipo 'input'*/
+/*
+    REFERÊNCIAS AOS ELEMENTOS DO TIPO 'INPUT' DENTRO
+    DESTE COMPONENTE
+*/
     const appIcon = useRef(null);
     const money = useRef(null);
     const distance = useRef(null);
     const time = useRef(null);
-/*referências aos elementos do tipo 'input'*/
 
+/*
+    FUNÇÃO QUE VERIFICA SE OS CAMPOS POSUEM ALGUM VALOR VÁLIDO INSERIDO
+    ENTÃO ADICIONA CADA UM DOS VALORES DENTRO DO ESTADO 'userData' PROV
+    -ENIENTE DO CONTEXTO COM A FUNÇÃO ATUALIZADORA DESTE ESTADO TAMBEM
+    PROVENIENTE DO CONTEXTO.
+    OS VALORES SÃO ADICIONADOS ATRAVÉS DA SOMA DOS VALORES ANTERIORES 
+    COM OS NOVOS VALORES INSERIDOS NOS CAMPOS CORRESPONDENTES. 
+*/
 async function AddStatistics() {
     if (
         money.current?.value.trim() !== "" &&
@@ -46,19 +61,23 @@ async function AddStatistics() {
                 return item;
             })
         }));
-        close(false); // Fecha o componente
-        setIsDisabled(!isDisabled); //desativa o botão de adicionar valores
+        close(false); // fecha o componente usando a função atualizadora de estado recebida através de 'props'.
+        setBtnIsDisabled(!btnIsDisabled); //desativa o botão de adicionar valores alterando o valor do estado 'btnIsDisabled'.
     }
-    updateData();
+    UpdateData();
 }
 
+/*
+    ALTERNA O VALOR DO ESTADO 'btnIsDisabled' DEPENDENDO SE OS CAMPOS
+    POSSUEM VALORES VÁLIDOS INSERIDOS OU NÃO.
+*/
 useEffect(() => {
     const checkFields = () => {
         const hasContent = 
             money.current?.value.trim() !== "" &&
             distance.current?.value.trim() !== "" &&
             time.current?.value.trim() !== "";
-        setIsDisabled(!hasContent);
+        setBtnIsDisabled(!hasContent);
     };
 
     // Adiciona eventos para verificar os campos quando há alterações
@@ -74,14 +93,18 @@ useEffect(() => {
     };
 }, []);
 
-
-async function updateData() {
+/*
+    REALIZA UMA CHAMADA PARA A API PASSANDO VALORES DE 'name' e 'password'
+    QUE SERÃO UTILIZADOS PARA BUSCAR UM USUÁRIO NO BANCO DE DADOS ENTÃO ATU
+    -ALIZA 'data' ATRAVÉS DE 'data' ( que recebe os valores dentro de session
+    Storage)
+*/
+async function UpdateData() {
     const user = {
         name: userData.userName,
         password: userData.userPassword,
         data: JSON.parse(sessionStorage.getItem("userData")),
     };
-
     try {
         const response = await fetch("http://localhost:8182/updateData", {
             method: "PUT",
@@ -92,14 +115,13 @@ async function updateData() {
         });
 
         if (response.status == 200) {
-            console.log("Dados atualizados com sucesso!");
+            console.log("Dados atualizados com sucesso!"); // DEVE APAREÇER NA TELA!
         } else {
-            console.error("Erro ao atualizar dados: " + response.status);
+            console.error("Erro ao atualizar dados: " + response.status); // DEVE APAREÇER NA TELA!
         }
     } catch (error) {
         console.error("Erro na requisição:", error);
     }
-    console.log(user);
 }
 
     return(
@@ -175,47 +197,10 @@ async function updateData() {
             type="button" 
             value="adicionar" 
             onClick={AddStatistics} 
-            disabled={isDisabled}
-            style={{ opacity: isDisabled ? 0.8 : 1 }}/>
+            disabled={btnIsDisabled}
+            style={{ opacity: btnIsDisabled ? 0.8 : 1 }}/>
         </article>
     )
 }
 
 export default AddValues;
-
-
-/*  
-    29 - funcionalidade do componente  'AddStatistics()'.
-
-    30
-    -> - checa se os campos de cada elemento input possui algum valor válido dentro deles
-    34
-
-    35   utiliza a funcação atualizadora de estado importada do contexto para mapear o array 'apps' cuja propriedade
-    -> - 'appName' seja igual ao atributo 'alt' (recebido por 'props') da imagem referenciada por  'appIcon', então
-    -> - insere nos campos 'total','distance' e 'time' a soma dos valores pré existentes no estado com os valores inseridos
-    48   no estado 'addNewValues'.
-
-    54   useEffect que verifica se existem valores válidos nos campos dos inputs para então inverter o valor booleano
-    -> - no estado 'isDisabled' ativando então o botão.
-    61
-
-
-    82 - icone de 'X' importado do react-icons dentro de um botão que usa a função de atualização de estado
-         recebida por 'props' do componente 'MyWorkApps.jsx' para 'false'. 
-
-    85 - uma imagem que recebe no atributo 'src' o caminho relativo a uma imagem do aplicativo selecionado
-         recebido através de 'props' do componente 'MyWorkApp.jsx'. 
-    
-    92   função que formata os valores inseridos no input removendo caracteres não numéricos e insere dinâmicamente
-    -> - uma vírgula se o número de caracteres numéricos digitados for superior a 2, por fim. atualiza o estado
-    102  'AddNewValues' com o valor inserido transformado em um número decimal e subistituindo a ',' por '.' ao salvar.
-
-    110  função atribuída ao input que tem por objetivo formatar os valores inseridos no campo removendo caracteres não
-    -> - numéricos e inserindo um '.' caso o número de caracteres inseridos dentro do input seja maior que 2, por fim.
-    119  atualiza o estado AddNewValues com o valor inserido transformado em número decimal.
-
-    126  funcão atribuída ao input que tem por objetivo tratar os valores inseridos, removendo quaisquer caracteres não
-    -> - numéricos e inserindo um ':' caso o número de caracteres inseridos seja mair que 2, por fim, salva dentro do estado
-    136  'AddNewValues' o valor inserido subistituindo o ':' por '.' e trtansformando-o em numero decimal.  
-*/

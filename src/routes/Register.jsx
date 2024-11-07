@@ -1,24 +1,25 @@
 import React,{ useContext, useRef } from "react"; 
 
-import { Link, useNavigate } from "react-router-dom";  //*REACT-ROUTER-DOM
+import { Link, useNavigate } from "react-router-dom";
 
-import { Context } from "@context/context.jsx";  //*IMPORT CONTEXT
+import { Context } from "@context/context.jsx";
 
-import ArrowButton from "@components/arrowButton/ArrowButton.jsx";  //*AN REACT ICON
+import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 
-import style from "@styles/Register.module.css";  //STYLESHEET
+import style from "@styles/Register.module.css";
 
 export default function Register(){
 
-    const { setUserConfig } = useContext(Context);  //* using context
+    const { setUserConfig } = useContext(Context);
 
-    const navigateTo = useNavigate();  //* useNavigate hook
+    const navigateTo = useNavigate();
 
-/*REFERENCE FOR INPUTS USER/PASSWORD*/
     const user = useRef(null);
     const password = useRef(null);
-/*REFERENCE FOR INPUTS USER/PASSWORD*/
 
+    /*
+    FUNÇÃO DE REGISTRO DE NOVO USUÁRIO
+    */
     function Register(){
         if(user.current.value.length < 6){
             user.current.value="";
@@ -34,14 +35,17 @@ export default function Register(){
             const NewUser = user.current.value;
             const NewPassword = password.current.value;
             setUserConfig((prevValue)=>({
-                ...prevValue, userName: NewUser, userPassword: NewPassword  //* this function adds userName and password in a object in context
+                ...prevValue, userName: NewUser, userPassword: NewPassword,
             }))
-            CreateUser(); //call function to create user
+            CreateUser(); //caso os dados estejam ok, chama a função para criar usuário
             
         }
     }
 
-    async function CreateUser(){  //* this function fetch data to /createUser route in API
+    /*
+    CRIA UM NOVO USUÁRIO NO BANCO DE DADOS
+    */
+    async function CreateUser(){
         const data = {
             name: user.current.value,
             password: password.current.value,

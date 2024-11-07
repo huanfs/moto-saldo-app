@@ -9,22 +9,26 @@ import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 import CheckBox from "@components/checkBox/CheckBox.jsx"; 
 /*components*/ 
 
-import style from "@styles/Config03.module.css";  //* stylesheet
+import style from "@styles/Config03.module.css";
 
 export default function Config03(){
 
-    const { userConfig } = useContext(Context); //* using context
+    const { userConfig } = useContext(Context);
 
     async function SaveData(){
-        const savingData = await fetch("http://localhost:8182/createOptions",{
-            method:"POST",
-            headers:{
-                "Content-Type":"Application/json",
-            },
-            body:JSON.stringify(userConfig),
-            mode:"cors",
-        })
-        .catch((err)=>{console.log("erro ao prosseguir " + err)})
+        try{
+            const saveOptions = await fetch("http://localhost:8182/createOptions",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"Application/json",
+                },
+                body:JSON.stringify(userConfig),
+                mode:"cors",
+            });
+        }
+        catch(err){
+            console.log("erro ao salvar configurações " + err)
+        }
     }
 
     return(

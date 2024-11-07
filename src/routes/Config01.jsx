@@ -1,16 +1,16 @@
 import React,{ useContext } from "react";
 
-import { Link } from "react-router-dom"; //* react router link component
+import { Link } from "react-router-dom";
 
-import { Context } from "@context/context.jsx";  //* import context
+import { Context } from "@context/context.jsx";
 
-import WorkApp from "@components/workApp/WorkApp.jsx";  //* component
+import WorkApp from "@components/workApp/WorkApp.jsx";
 
-import style from "@styles/Config01.module.css";  //* stylesheet
+import style from "@styles/Config01.module.css";
 
 export default function Config01(){
 
-    const { logo } = useContext(Context);    //* using context
+    const { logo } = useContext(Context);
 
     return(
         <main className={style.container}>
@@ -32,17 +32,8 @@ export default function Config01(){
             </article>
             <section>
                 <Link to="/config02"><input type="button" value="prosseguir"/></Link>
-                <Link to=""><p>pular</p></Link>
+                <Link to="/"><p>voltar</p></Link>
             </section>
         </main>
     )
 }
-
-/* 
-    this route import 'LOGO' objecto from context
-    then. map 'LOGO' and render 'WorkApp' component
-    and give to him the following props:
-    LOGOTYPE: the relative path for an logo image
-    NAME: the name of application
-    key: the key fron every 'WorkApp' render
-*/

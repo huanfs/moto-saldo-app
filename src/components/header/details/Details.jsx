@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import { Context } from "@context/context.jsx"; // importação do contexto
+import { Context } from "@context/context.jsx";
 
 import style from "./Details.module.css";
 
 function Details(){
 
-    const { userData } = useContext( Context ) // utilização do contexto
+    const { userData } = useContext( Context );
 
     const[details, setDetails] = useState({ // estado que armazena o total de tempo distancia e ganhos
         "total":0,

@@ -9,21 +9,24 @@ export default function WorkApp({logotype, name}){
     const { userConfig,setUserConfig } = useContext(Context);
     /*
     CRIA NO ESTADO 'userConfig.apps' UM OBJETO
-     
+    COM AS PROPRIEDADES DE 'name', 'total',
+    'distance' e 'time'.
     */
-   React.useEffect(()=>{
-    console.log(userConfig.apps)
-   },[userConfig])
+
     function AddApp(){
-        // const NewApp = name;
         setUserConfig((prevValue)=>({
-            ...prevValue, apps:[...prevValue.apps, {"appName":name, "total":0, "distance":0, "time":0}]
+            ...prevValue, apps:[...prevValue.apps, 
+            {"appName":name, "total":0, "distance":0, "time":0}]
         }))
     }
 
     return(
-        <div className={style.application} onClick={AddApp}>
-            <img src={logotype} alt={name}/>
+        <div 
+        className={style.application} 
+        onClick={AddApp}>
+            <img 
+            src={logotype} 
+            alt={name}/>
             <span>{name}</span>
         </div>
     )
