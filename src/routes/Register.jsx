@@ -46,18 +46,25 @@ export default function Register(){
     CRIA UM NOVO USUÁRIO NO BANCO DE DADOS
     */
     async function CreateUser(){
-        const data = {
-            name: user.current.value,
-            password: password.current.value,
-        };
-        const create = await fetch("http://localhost:8182/createUser",{
-            method:"POST",
-            headers:{
-                "Content-Type":"Application/json",
-            },
-            body: JSON.stringify(data),
-        }).then((response)=>{response.status == 200 ? navigateTo("/enter") : console.log(response)})
-        .catch(err=>{console.log(err)})
+        try{
+            const data = {
+                name: user.current.value,
+                password: password.current.value,
+            };
+            const create = await fetch("http://localhost:8182/createUser",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"Application/json",
+                },
+                body: JSON.stringify(data),
+            });
+            if(create.status == 200){
+                navigateTo("/enter");
+            }
+        }
+        catch(err){
+            console.log("erro com ao criar usuário")
+        }
     }
 
     return(
@@ -74,11 +81,3 @@ export default function Register(){
         </main>
     )
 }
-
-/*
-    this route renders an formulary to create an user.
-    the 'Register' function will treat the user name and user password
-    and displays an error if it does not meet the requirements.
-    the 'CreateUser' function uses the values into input fields
-    and passes then from request body.
-*/
