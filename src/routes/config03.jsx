@@ -4,6 +4,8 @@ import { Link } from "react-router-dom" //* link from react-router-dom
 
 import { Context } from "@context/Context.jsx"; //* import context
 
+import { SetOptions } from "@api/setOptions/setOptions.js";
+
 /*components*/
 import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 import CheckBox from "@components/checkBox/CheckBox.jsx"; 
@@ -14,22 +16,6 @@ import style from "@styles/Config03.module.css";
 export default function Config03(){
 
     const { userConfig } = useContext(Context);
-
-    async function SaveData(){
-        try{
-            const saveOptions = await fetch("http://localhost:8182/createOptions",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"Application/json",
-                },
-                body:JSON.stringify(userConfig),
-                mode:"cors",
-            });
-        }
-        catch(err){
-            console.log("erro ao salvar configurações " + err)
-        }
-    }
 
     return(
         <main className={style.container}>
@@ -50,7 +36,7 @@ export default function Config03(){
             </article>
             <section>
                 <Link to="/config02"><ArrowButton direction="left"/></Link>
-                <Link to="/main" onClick={SaveData}><ArrowButton/></Link>
+                <Link to="/main" onClick={SetOptions(userConfig)}><ArrowButton/></Link>
             </section>
         </main>
     )
