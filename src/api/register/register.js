@@ -7,8 +7,8 @@ QUE ARMAZENA O HOOK 'useNavigate' PARA REALIZAR O CAD
 export async function CreateUser(name, password, navigate){
     try{
         const data = {
-            name: name.value,
-            password: password.value,
+            name: name,
+            password: password,
         };
         const create = await fetch("http://localhost:8182/createUser",{
             method:"POST",
