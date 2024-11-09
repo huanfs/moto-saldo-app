@@ -10,7 +10,7 @@ export const Globals = ({ children }) => {
         {"logotype":"src/assets/images/ifood-logo.png", "name":"ifood"},
         {"logotype":"src/assets/images/pedeai-logo.png", "name":"pede ai"},
         {"logotype":"src/assets/images/mercadoenvios-logo.png", "name":"merado en."},
-    ]
+    ];
 
     /*
     ESTADO QUE ARMAZENA AS CONFIGURAÇÕES E DADOS DE UM NOVO USUÁRIO
@@ -55,7 +55,7 @@ export const Globals = ({ children }) => {
             userConfig,
             setUserConfig,
             userData,
-            setUserData
+            setUserData,
         }}>
             { children }
         </Context.Provider>
