@@ -11,6 +11,7 @@
 }
 .container h1 span{
     text-decoration-line:underline;
+    margin-left:0.5em;
 }
 .container article{
     width:90%;

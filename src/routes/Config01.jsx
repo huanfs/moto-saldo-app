@@ -10,11 +10,17 @@ import style from "@styles/Config01.module.css";
 
 export default function Config01(){
 
-    const { logo } = useContext(Context);
+    const { logo, userConfig } = useContext(Context);
 
     return(
         <main className={style.container}>
-            <h1>bem vindo <span>fulano</span></h1>
+            <h1>bem vindo
+                <span>
+                   { 
+                    userConfig?.userName ? userConfig.userName : "Motoboy"
+                   }
+                </span>
+            </h1>
             <article>
                 <h2>em quais aplicativos voce trabalha:</h2>
                     <article>
