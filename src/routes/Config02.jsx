@@ -16,8 +16,8 @@ export default function Config02(){
     const time = useRef(null);
 
     function AddGoals(){
-        const moneyGoal = money.current.value;
-        const timeGoal = time.current.value;
+        const moneyGoal = money.current.value.replace(",",".");
+        const timeGoal = time.current.value.replace(":",".");
         setUserConfig((prevValue => ({
             ...prevValue, goals: {                             
                 ...prevValue.goals, money: moneyGoal, time: timeGoal,
@@ -32,14 +32,36 @@ export default function Config02(){
                 <input 
                 type="text" 
                 placeholder="00,00" 
-                ref={money}/>
+                ref={money}
+                maxLength="9"
+                onChange={(event)=>{ // converte o valor digitado para formato de dinheiro
+                let money  = event.target.value.replace(/\D/g, '');
+                money = new Intl.NumberFormat('pt-br', {
+                    minimunFractionDigits: 2,
+                    maximunFractionDigits: 2, 
+                }).format(money / 100);
+                event.target.value = money;
+                }}/>
+
             </section>
             <section>
                 <h2>quantas horas pretende trabalhar</h2>
                 <input 
                 type="text" 
                 placeholder="00:00" 
-                ref={time}/>
+                ref={time}
+                maxLength="5"
+                onChange={(event)=>{ // converte o valor digitado para formato de horas/minutos
+                let hours = event.target.value.replace(/\D/g, '');
+                    if (hours.length >= 3) {
+                        hours = hours.slice(0, 2) + ":" + hours.slice(2, 4);
+                    } 
+                    else if (hours.length === 2) {
+                    hours = hours.slice(0, 2) + ":";
+                    }
+            event.target.value = hours;
+                }}/>
+
             </section>
             <section>
                 <Link to="/config01">
