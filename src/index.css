@@ -3,6 +3,8 @@
     --White:#fff;
     --Black:#000;
     --PaleGray:#757575;
+    --PositiveGreen: #54f523;
+    --NegativeRed: #f52929;
     --Gradient:linear-gradient(to bottom, var(--Black) 80%, var(--PaleGray) 100%);
 }
 

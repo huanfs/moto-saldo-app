@@ -1,57 +1,61 @@
-import React,{ useContext, useEffect, useState  } from "react";
+import React,{ useContext, useEffect  } from "react";
 
-/*components*/
+/*componentes*/
     import Header from "@components/header/Header.jsx";
     import MyWorkApp from "@components/myWorkApp/MyWorkApp.jsx";
-/*components*/
+/*componentes*/
 
-import { Context } from "@context/Context.jsx";
+import { Context } from "@context/Context.jsx"; // importação do contexto
 
-import style from "@styles/Main.module.css";
-
+import style from "@styles/Main.module.css"; // estilização
+ 
 export default function Main(){
-
-    const { userConfig } = useContext(Context); // using context
-
-    const[userData, setUserData] = useState(localStorage.getItem("userData")); //* persistent state of userData
+    
+    const { userData, setUserData, userConfig } = useContext(Context); // usando o contexto
 
     useEffect(() => {
+        let dataPayLoad = {};
         const fetchData = async () => {
-            try {
-                const data = {
-                    name: userConfig.userName,
-                    password: userConfig.userPassword
-                };
-                const response = await fetch("http://localhost:8182/getData", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                });
-                if (response.status === 200) {
-                    const result = await response.json(); // Convertendo a resposta em JSON
-                    localStorage.setItem("userData", result.data); //salvando no localStorage
-                } else {
-                    console.log("Usuário não encontrado ou erro no servidor");
+            const storedData = sessionStorage.getItem("userData");
+            if(storedData){
+                setUserData(JSON.parse(storedData));
+            }
+            else if(userData || userConfig){
+                try {
+                        if(userConfig?.userName && userConfig?.userPassword){
+                            dataPayLoad = {
+                                name: userConfig.userName,
+                                password: userConfig.userPassword,
+                            }
+                        }
+                        else if(userData?.userName && userData?.userPassword){
+                            dataPayLoad = {
+                                name: userData.userName,
+                                password: userData.userPassword,
+                            }
+                        }
+
+                    const response = await fetch("http://localhost:8182/getData", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(dataPayLoad),
+                    });
+                    if (response.status === 200) { 
+                        const result = await response.json(); // Convertendo a resposta em JSON
+                        setUserData(JSON.parse(result.data))
+                        sessionStorage.setItem("userData", result.data); //salvando no localStorage
+                    } else {
+                        console.log("Usuário não encontrado ou erro no servidor");
+                    }
+                } catch (err) {
+                    console.log("Erro no front-end", err);
                 }
-            } catch (err) {
-                console.log("Erro no front-end", err);
             }
         };
         fetchData();
-    }, [userConfig]); // Dependência para executar quando 'userConfig' mudar
-
-    /*aqui transforma o objeto recuperado do banco de dados
-    e salvo dentro de localStorage como string dentro do estado
-    userData em formato objeto*/ 
-    useEffect(()=>{
-        const obj = async()=>{
-            const toObject = await JSON.parse(userData);
-            setUserData(toObject)
-        }
-        obj()
-    })
+    }, [setUserData]);
 
 
     return(
@@ -59,17 +63,11 @@ export default function Main(){
             <Header/>
             <section>
                 {
-                    typeof(userData) == "object" ? userData.apps.map((item, index)=>{
+                    typeof(userData) == "object" && userData.apps.map((item, index)=>{
                         return(
                             <MyWorkApp 
                             key={index}
-                            appLogo={item}/>
-                        )
-                    }) : userConfig.apps.map((item, index)=>{
-                        return(
-                            <MyWorkApp
-                            key={index}
-                            appLogo={item}/>
+                            appLogo={item.appName}/>
                         )
                     })
                 }
@@ -77,3 +75,4 @@ export default function Main(){
         </main>
     )
 }
+

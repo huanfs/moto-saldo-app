@@ -1,60 +1,40 @@
 import React, { useRef, useContext } from "react";
 
-import { Context } from "@context/Context.jsx"; //* import context
+import { Context } from "@context/Context.jsx";
 
-import { useNavigate } from "react-router-dom"; //* import navigate hook
+import { useNavigate } from "react-router-dom";
 
-/* react-icons */
+import {Authenticate} from "@api/enter/authenticate.js";
+
 import { FaArrowRight } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
-/* react-icons */
 
-import style from "@styles/Enter.module.css"; //* stylesheet
+import style from "@styles/Enter.module.css";
 
 export default function Enter(){
 
-    const { setUserConfig } = useContext(Context); // consuming context
+    const { setUserData, setUserConfig } = useContext(Context);
 
-    const navigateTo = useNavigate(); // use navigate hook
+    const navigateTo = useNavigate();
 
-    const userName = useRef(null); // references to inputs
+    const userName = useRef(null);
     const password = useRef(null);
 
+    /*
+    REALIZA A AUTENTICAÇÃO DO USUÁRIO
+    */
     async function LogIn(){
-        const user = {
-            name: userName.current.value,
-            password: password.current.value,
-        };
-
-        try{
-            const searchUser = await fetch("http://localhost:8182/authenticate",{
-                method:"POST",
-                headers:{
-                    "Content-Type":"application/json",
-                },
-                body:JSON.stringify(user),
-                mode:"cors",
-            })
-            if(searchUser.status == 200){
-                const data = await searchUser.json()
-                setUserConfig((prevValue)=>({
-                    ...prevValue, 
-                    userName: userName.current.value, 
-                    userPassword: password.current.value,
-                }))
-                if(data.data){ // case old user (with data) proceed to /main
-                    navigateTo("/main")
-                }
-                else if(!data.data){ // else, if a new user (without data) proceed to *config01
-                    navigateTo("/config01")
-                }
-            }
-        }
-        catch (err) {
-            console.log("erro inesperado com a autenticação")
-        }
+        const authenticate = Authenticate(
+            userName.current, 
+            password.current,
+            setUserConfig,
+            setUserData,
+            navigateTo,
+        );
+        const response = await authenticate;
     }
+    
     return(
         <main className={style.container}>
             <h1>entrar</h1>
@@ -81,4 +61,5 @@ export default function Enter(){
         </main>
     )
 }
+
 

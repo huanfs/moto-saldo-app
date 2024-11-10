@@ -1,23 +1,32 @@
-import React,{ useContext, useEffect } from "react";
+import React,{ useContext } from "react";
 
-import { Context } from "@context/context.jsx";  //* import context
+import { Context } from "@context/context.jsx";
 
 import style from "./WorkApp.module.css";
 
 export default function WorkApp({logotype, name}){
 
-    const { userConfig, setUserConfig } = useContext(Context);  //* using context
+    const { userConfig,setUserConfig } = useContext(Context);
+    /*
+    CRIA NO ESTADO 'userConfig.apps' UM OBJETO
+    COM AS PROPRIEDADES DE 'name', 'total',
+    'distance' e 'time'.
+    */
 
-    function AddApp(event){
-        const NewApp = event.target.parentElement.id;
+    function AddApp(){
         setUserConfig((prevValue)=>({
-            ...prevValue, apps:[...prevValue.apps, NewApp]   //* this function adds a new app for work informations
+            ...prevValue, apps:[...prevValue.apps, 
+            {"appName":name, "total":0, "distance":0, "time":0}]
         }))
     }
 
     return(
-        <div className={style.application} id={name} onClick={AddApp}>
-            <img src={logotype} alt={name}/>
+        <div 
+        className={style.application} 
+        onClick={AddApp}>
+            <img 
+            src={logotype} 
+            alt={name}/>
             <span>{name}</span>
         </div>
     )

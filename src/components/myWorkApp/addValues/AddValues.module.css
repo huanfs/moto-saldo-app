@@ -12,6 +12,17 @@
     top:15%;
     transform:translate(-50%);
 }
+.new .close{
+    position:absolute;
+    top:0.5em;
+    right:0.5em;
+    z-index:10;
+}
+.new .close svg{
+    min-width:20px;
+    min-height:20px;
+    color:var(--Black);
+}
 .new input[type="text"]{
     width:100%;
     font-size:1.8em;

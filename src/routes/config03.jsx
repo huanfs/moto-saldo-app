@@ -1,31 +1,21 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom" //* link from react-router-dom
+import { Link } from "react-router-dom";
 
-import { Context } from "@context/Context.jsx"; //* import context
+import { Context } from "@context/Context.jsx";
+
+import { SetOptions } from "@api/setOptions/setOptions.js";
 
 /*components*/
 import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 import CheckBox from "@components/checkBox/CheckBox.jsx"; 
 /*components*/ 
 
-import style from "@styles/Config03.module.css";  //* stylesheet
+import style from "@styles/Config03.module.css";
 
 export default function Config03(){
 
-    const { userConfig } = useContext(Context); //* using context
-
-    async function SaveData(){
-        const savingData = await fetch("http://localhost:8182/createOptions",{
-            method:"POST",
-            headers:{
-                "Content-Type":"Application/json",
-            },
-            body:JSON.stringify(userConfig),
-            mode:"cors",
-        })
-        .catch((err)=>{console.log(err)})
-    }
+    const { userConfig } = useContext(Context);
 
     return(
         <main className={style.container}>
@@ -46,13 +36,8 @@ export default function Config03(){
             </article>
             <section>
                 <Link to="/config02"><ArrowButton direction="left"/></Link>
-                <Link to="/main" onClick={SaveData}><ArrowButton/></Link>
+                <Link to="/main" onClick={SetOptions(userConfig)}><ArrowButton/></Link>
             </section>
         </main>
     )
 }
-
-
-//esta rota é a responsável por concluir e salvar todas as configurações
-// a função SaveData() faz uma requisição do tipo POST e passa como corpo 
-// da requisição o estado userOptions convertido em uma string JSON
