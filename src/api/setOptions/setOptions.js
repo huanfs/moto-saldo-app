@@ -1,5 +1,8 @@
 
-
+/*
+ENVIA PARA O BANCO DE DADOS O ESTADO 'userConfig'
+NO FORMADO DE STRING JSON.
+*/
 export async function SetOptions(userConfig){
     try{
         const saveOptions = await fetch("http://localhost:8182/createOptions",{

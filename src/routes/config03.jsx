@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
-import { Link } from "react-router-dom" //* link from react-router-dom
+import { Link } from "react-router-dom";
 
-import { Context } from "@context/Context.jsx"; //* import context
+import { Context } from "@context/Context.jsx";
 
 import { SetOptions } from "@api/setOptions/setOptions.js";
 
@@ -41,9 +41,3 @@ export default function Config03(){
         </main>
     )
 }
-
-/*
-    this route is responsible for finish all user configurations.
-    the 'SaveData' function fetches an type 'POST' and give to body the
-    state of 'userOptions' state in string format.
-*/

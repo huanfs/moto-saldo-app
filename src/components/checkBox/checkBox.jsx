@@ -7,11 +7,11 @@ import style from "./CheckBox.module.css";
 function CheckBox({ label, box }){
 
     const { setUserConfig } = useContext(Context);
-
-    /*
-    captura o id do elemento e salva no estado do contexto
-    através da função atualizadora.
-    */
+    
+   /*
+   CAPTURA O 'id' DO ELEMENTO E SALVA NO ESTADO
+   DO CONTEXTO
+   */
     function SetChoice(event){
         setUserConfig((prevValue)=> ({
             ...prevValue, choice: event.target.id
