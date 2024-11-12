@@ -24,10 +24,15 @@ export async function Authenticate(name, password, setUserConfig, setUserData, n
             ...prevValue, 
             userName: name.value, 
             userPassword: password.value,
-        }))
+        }));
         if(data.data){ //caso o usuário já seja cadastrado, recebe e salva seus dados no estado 'userData' e navega para a página 'Main.jsx'
-            setUserData(JSON.parse(data.data))
-            navigate("/main");
+            if(typeof(data.data) == "object"){
+                setUserData(data.data);
+            }
+            else if(typeof(data.data) == "string"){
+                setUserData(JSON.parse(data.data))
+            }
+           navigate("/main");
         }
         else if(!data.data){ // caso o usuário seja novo, procede para a página config01.jsx para iniciar configurações de conta
             navigate("/config01");
@@ -35,6 +40,6 @@ export async function Authenticate(name, password, setUserConfig, setUserData, n
     }
 }
     catch (err) {
-        console.log("erro inesperado com a autenticação")
+        console.log("erro inesperado com a autenticação " + err)
     }
 }

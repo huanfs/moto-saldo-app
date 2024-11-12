@@ -9,3 +9,6 @@ comentadas ao final do componente
 componente add values deve retornar algum sinal de falha ou sucesso ao adicionar
 
 implementar componentes de loading e de mensagens para erros e sucesso
+
+formatar os valores de distancia e tempo no componente details para mostrar as horas e
+minutos de forema correta
