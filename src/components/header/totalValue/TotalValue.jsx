@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 
 import { Context } from "@context/Context.jsx";
 
@@ -6,6 +6,8 @@ import style from "./TotalValue.module.css";
 
 function TotalValue(){
     const { userData } = useContext(Context);
+
+    const money = useRef(null);
 
     const[total, setTotal] = useState(0);
 
@@ -27,8 +29,28 @@ function TotalValue(){
         Calculate()
     },[userData])
 
+    /*
+    ANIMAÇÃO AO ADICIONAR VALOR
+    */
+    useEffect(()=>{
+        money.current.style.color="var(--PositiveGreen)";
+        money.current.style.transform="scale(1.5,1.5)";
+        setInterval((i)=>{
+            money.current.style.color="var(--White)";
+            money.current.style.transform="scale(1,1)";
+        },1000);
+    },[total])
+
     return(
-        <h1 className={style.total}><span>R$</span> {total}</h1>
+        <h1 
+        className={style.total}>
+            <span>
+                R$
+            </span> 
+            <p ref={money}>
+                {total}
+            </p>
+        </h1>
     )
 }
 

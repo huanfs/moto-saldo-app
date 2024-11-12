@@ -32,7 +32,6 @@ export default function Enter(){
             setUserData,
             navigateTo,
         );
-        const response = await authenticate;
     }
     
     return(

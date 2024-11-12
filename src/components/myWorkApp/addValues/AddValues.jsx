@@ -73,7 +73,7 @@ async function HandleUpdate(){
         close,
     )
     const response = await getValues;
-    response ? UpdateData(userData) : console.log("erro ao adicionar dados"); //ADIDIONAR UMA MENSAGEM AO CLIENT
+    response ? UpdateData(userData) : window.alert("erro ao adicionar"); //ADIDIONAR UMA MENSAGEM AO CLIENT
 }
 
     return(

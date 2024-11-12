@@ -8,10 +8,15 @@ comentadas ao final do componente
 
 componente add values deve retornar algum sinal de falha ou sucesso ao adicionar
 
-config01 na linha 17 renderizar o nome de usuário
+implementar componentes de loading e de mensagens para erros e sucesso
 
+<<<<<<< HEAD
 DENTRO DE CONFIG 02 preciso implementar funções para transformar os valores
 no formato de dinheiro e de horas
 
 
 implementar componentes de loading e de mensagens para erros e sucesso
+=======
+formatar os valores de distancia e tempo no componente details para mostrar as horas e
+minutos de forema correta
+>>>>>>> feat
