@@ -21,9 +21,6 @@ export async function CreateUser(name, password, navigate){
             console.log("usuario criado")
             navigate("/enter"); //navega para a rota 'enter'.
         }
-        else{
-            console.log("erro ao criar usuário")
-        }
     }
     catch(err){
         console.log("erro com ao criar usuário")
