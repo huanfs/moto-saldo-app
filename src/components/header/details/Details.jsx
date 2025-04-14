@@ -36,15 +36,15 @@ function Details(){
                 <p>ganhos totais</p>
                 <span>
                     {
-                        details.total != 0 ? details.total : "00,00"
+                        details.total != 0 ? `${details.total} R$` : "00,00"
                     }
                     </span>
             </div>
             <div>
-                <p>KM/s percorridos</p>
+                <p>KMs percorridos</p>               
                 <span>
                     {
-                        details.distance != 0 ? details.distance : "00.0"
+                        details.distance != 0 ? `${details.distance} KM` : "00.0"
                     }
                 </span>
             </div>
@@ -52,7 +52,7 @@ function Details(){
                 <p>horas trabalhadas</p>
                 <span>
                     {
-                        details.time != 0 ? details.time : "00:00"
+                        details.time != 0 ? `${details.time} H` : "00:00"
                     }
                     </span>
             </div>
