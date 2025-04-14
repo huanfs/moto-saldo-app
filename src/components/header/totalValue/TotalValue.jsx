@@ -13,7 +13,7 @@ function TotalValue(){
 
     /*
     SOMA OS VALORES DE 'TOTAL' DO ESTADO 'userData'
-    exEXECUTANDO UM 'forEach' PARA CADA OBJETO DENTRO
+    EXECUTANDO UM 'forEach' PARA CADA OBJETO DENTRO
     de 'apps' E SALVA O RESULTADO NO ESTADO 'total'.
     */
     useEffect(()=>{
@@ -23,7 +23,11 @@ function TotalValue(){
                 userData.apps.forEach(item=>{
                     parseFloat(totalValue += item.total || 0)
                 });
-                setTotal(totalValue);
+                const formattedValue = totalValue.toLocaleString('pt-BR', {
+                    minimunFractionDigits: 2,
+                    maximunFractionDigits: 2,
+                })
+                setTotal(formattedValue);
             }
         }
         Calculate()
