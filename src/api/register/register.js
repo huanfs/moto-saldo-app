@@ -23,6 +23,6 @@ export async function CreateUser(name, password, navigate){
         }
     }
     catch(err){
-        console.log("erro com ao criar usuário")
+        console.log("erro ao criar usuário")
     }
 }

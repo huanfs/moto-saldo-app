@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-import { Context } from "@context/context.jsx";
+import { Context } from "@context/Context.jsx";
 
 import style from "./Details.module.css";
 

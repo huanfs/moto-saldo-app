@@ -1,6 +1,6 @@
 import React,{ useContext } from "react";
 
-import { Context } from "@context/context.jsx";
+import { Context } from "@context/Context.jsx";
 
 import style from "./WorkApp.module.css";
 

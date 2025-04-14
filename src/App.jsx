@@ -2,7 +2,7 @@ import React from "react";  //****REACT*/
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";    //****REACT-ROUTER*/
 
-import { Globals } from "@context/context.jsx";    //****CONTEXT*/
+import { Globals } from "@context/Context.jsx";    //****CONTEXT*/
 
 //****PAGES*/
 import HomePage from "@routes/HomePage.jsx";

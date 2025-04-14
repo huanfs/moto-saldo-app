@@ -2,7 +2,7 @@ import React,{ useContext, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
-import { Context } from "@context/context.jsx";
+import { Context } from "@context/Context.jsx";
 
 import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
 

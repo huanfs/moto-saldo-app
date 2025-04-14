@@ -2,7 +2,7 @@ import React,{ useContext } from "react";
 
 import { Link } from "react-router-dom";
 
-import { Context } from "@context/context.jsx";
+import { Context } from "@context/Context.jsx";
 
 import WorkApp from "@components/workApp/WorkApp.jsx";
 
