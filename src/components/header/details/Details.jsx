@@ -2,9 +2,13 @@ import React, { useContext, useState, useEffect } from "react";
 
 import { Context } from "@context/Context.jsx";
 
+import { useNavigate } from "react-router-dom";
+
 import style from "./Details.module.css";
 
 function Details(){
+
+    const navigateTo = useNavigate();
 
     const { userData } = useContext( Context );
 
@@ -56,6 +60,11 @@ function Details(){
                     }
                     </span>
             </div>
+            <input 
+            type="button" 
+            value="sair do aplicativo"
+            onClick={()=>{navigateTo("/")}}
+            />
         </article>
     )
 }
