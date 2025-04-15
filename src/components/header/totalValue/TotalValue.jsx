@@ -45,7 +45,7 @@ function TotalValue(){
                     money.current.style.color = "var(--White)";
                     money.current.style.transform = "scale(1,1)";
                 }
-            }, 1000);
+            }, 200);
             return () => clearInterval(interval);
         }
     }, [total]);
