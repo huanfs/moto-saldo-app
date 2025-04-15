@@ -40,7 +40,7 @@ function Details(){
                 <p>ganhos totais</p>
                 <span>
                     {
-                        details.total != 0 ? `${details.total} R$` : "00,00"
+                        details.total != 0 ? `${details.total.toLocaleString('pt-BR', {minimunFractionDigits:2, maximunFractionDigits:2})} R$` : "00,00"
                     }
                     </span>
             </div>
