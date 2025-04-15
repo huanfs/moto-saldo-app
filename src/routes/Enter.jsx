@@ -34,7 +34,7 @@ export default function Enter(){
         );
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (sessionStorage.getItem("userData")) {
             const autoCompleteCredentials = window.confirm("Deseja usar as credenciais salvas?");
             if(autoCompleteCredentials){
@@ -45,7 +45,7 @@ export default function Enter(){
                 LogIn();
             }
         }
-    },[]);
+    },[]);*/
     
     return(
         <main className={style.container}>
@@ -62,7 +62,7 @@ export default function Enter(){
                     <label htmlFor="password">senha</label>
                     <div>
                         <FaLock/>
-                        <input type="text" ref={password}/>
+                        <input type="password" ref={password}/>
                     </div>
                 </div>
             </form>
