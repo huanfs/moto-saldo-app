@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 
 import { Context } from "@context/Context.jsx";
 
@@ -33,6 +33,18 @@ export default function Enter(){
             navigateTo,
         );
     }
+
+    useEffect(() => {
+        if (sessionStorage.getItem("userData")) {
+            const autoCompleteCredentials = window.confirm("Deseja usar as credenciais salvas?");
+            if(autoCompleteCredentials){
+                const credentials = JSON.parse(sessionStorage.getItem("userData"));
+                console.log(credentials)
+                userName.current.value = credentials.userName;
+                password.current.value = credentials.userPassword;
+            }
+        }
+    },[])
     
     return(
         <main className={style.container}>
