@@ -38,8 +38,8 @@
     align-items:center;
     gap:2em;
 }
-.container section a{
-    text-decoration-line:none;
+.container section p{
+    cursor:pointer;
 }
 .container section button{
     width:120px;
