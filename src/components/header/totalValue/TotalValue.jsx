@@ -36,14 +36,19 @@ function TotalValue(){
     /*
     ANIMAÇÃO AO ADICIONAR VALOR
     */
-    useEffect(()=>{
-        money.current.style.color="var(--PositiveGreen)";
-        money.current.style.transform="scale(1.5,1.5)";
-        setInterval((i)=>{
-            money.current.style.color="var(--White)";
-            money.current.style.transform="scale(1,1)";
-        },1000);
-    },[total])
+    useEffect(() => {
+        if (money.current) {
+            money.current.style.color = "var(--PositiveGreen)";
+            money.current.style.transform = "scale(1.5,1.5)";
+            const interval = setInterval(() => {
+                if (money.current) {
+                    money.current.style.color = "var(--White)";
+                    money.current.style.transform = "scale(1,1)";
+                }
+            }, 1000);
+            return () => clearInterval(interval);
+        }
+    }, [total]);
 
     return(
         <h1 
