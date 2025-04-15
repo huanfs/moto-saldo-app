@@ -42,9 +42,10 @@ export default function Enter(){
                 console.log(credentials)
                 userName.current.value = credentials.userName;
                 password.current.value = credentials.userPassword;
+                LogIn();
             }
         }
-    },[])
+    },[]);
     
     return(
         <main className={style.container}>
