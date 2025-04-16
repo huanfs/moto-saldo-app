@@ -1,6 +1,34 @@
+/*animações da tela inicial*/
+@keyframes animation-fade-out{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+@keyframes animation-move-motorcicle{
+    0%{
+        margin-left:-300px;
+        transform:rotate(-50deg);
+    }
+    25%{
+        margin-left:20px;
+        transform:rotate(0deg);
+    }
+    50%{
+        margin-left:-20px;
+    }
+    100%{
+        margin-left:0;
+    }
+}
 .container{
     color:var(--White);
     background:var(--Gradient);
+    animation-name:animation-fade-out;
+    animation-duration:300ms;
+    animation-iteration-count:1;
 }
 .container header{
     display:flex;
@@ -20,6 +48,10 @@
 .container .motorcycle{
     min-width:260px;
     min-height:180px;
+    animation-name:animation-move-motorcicle;
+    animation-duration:1s;
+    animation-iteration-count:1;
+    animation-timing-function:ease-in-out
 }
 .container section{
     display:flex;
