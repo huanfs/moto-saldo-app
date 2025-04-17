@@ -1,16 +1,20 @@
-import React,{ useRef } from "react"; 
+import React,{ useRef,useState } from "react"; 
 
 import { Link, useNavigate } from "react-router-dom";
 
-import {HandleUserRegistration} from "@utils/register/handleUserRegistration.js";
+import { HandleUserRegistration } from "@utils/register/handleUserRegistration.js";
 
-import {CreateUser} from "@api/register/register.js";
+import { CreateUser } from "@api/register/register.js";
 
 import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
+
+import Loading from "@components/loading/Loading.jsx";
 
 import style from "@styles/Register.module.css";
 
 export default function Register(){
+
+    const[isLoading, setIsLoading] = useState(false);
 
     const navigateTo = useNavigate();
 
@@ -20,17 +24,29 @@ export default function Register(){
     /*
     FUNÇÃO DE REGISTRO DE NOVO USUÁRIO
     */
-    async function Register(){
-        const isValid = HandleUserRegistration(user.current, password.current);
-        const response = await isValid;
-        console.log(response);
-        if(response.name && response.password == true){
-            const register = CreateUser(user.current.value, password.current.value, navigateTo);
+    async function Register(){    
+        setIsLoading(true);
+        try{
+            const isValid = HandleUserRegistration(user.current, password.current);
+            const response = await isValid;
+            console.log(response);
+            if(response.name && response.password == true){
+                const register = CreateUser(user.current.value, password.current.value, navigateTo);
+            }
+        }
+        catch(err){
+            console.log("erro ao registrar usuário: " + err);
+        }
+        finally{
+            setIsLoading(false);
         }
     }
 
     return(
         <main className={style.container}>
+            {
+                isLoading && <Loading/>
+            }
             <h1>registrar</h1>
             <form>
                 <input type="text" placeholder="crie um nome de usuário" ref={user}/>
