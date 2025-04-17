@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { HandleUserRegistration } from "@utils/register/handleUserRegistration.js";
 
-import { CreateUser } from "@api/register/register.js";
+import { CreateUser } from "@services/register/register.js";
 
 import { Context } from "@context/Context.jsx";
 
@@ -62,8 +62,8 @@ export default function Register(){
             }
             <h1>registrar</h1>
             <form>
-                <input type="text" placeholder="crie um nome de usuário" ref={user}/>
-                <input type="password" placeholder="crie uma senha" ref={password}/>
+                <input type="text" placeholder="crie um nome de usuário" ref={user} maxLength="6"/>
+                <input type="password" placeholder="crie uma senha" ref={password} maxLength="8"/>
             </form>
             <section>
                 <input type="button" value="registrar" onClick={Register}/>
