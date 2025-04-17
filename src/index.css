@@ -6,6 +6,7 @@
     --PositiveGreen: #54f523;
     --NegativeRed: #f52929;
     --Gradient:linear-gradient(to bottom, var(--Black) 80%, var(--PaleGray) 100%);
+    --BlurBackground: rgba(255, 255, 255, 0.8);
 }
 
 *{

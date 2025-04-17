@@ -31,10 +31,23 @@ export const Globals = ({ children }) => {
     CONVERTENDO-O EM OBJETO. DO CONTRÁRIO, DEFINE O ESTADO COM OS VALORES CONTIDOS
     DENTRO DO ESTADO 'userConfig'.
     */
-    const [userData, setUserData] = useState(() => {
+    const[userData, setUserData] = useState(() => {
         const storedData = sessionStorage.getItem("userData");
         return storedData ? JSON.parse(storedData) : userConfig;
     });
+
+    /*ARMAZENA MENSAGENS DE STATUS DA REQUISIÇÃO À API E SE DEVE SER EXIBIDA*/
+    const[statusMessage, setStatusMessage] = useState("");
+    const[showStatusMessage, setShowStatusMessage] = useState(false);
+
+    /*APAGA A MENSAGEM DO ESTADO APÓS UM TEMPO*/
+    useEffect(()=>{
+        statusMessage != "" && setTimeout(() => {
+            setStatusMessage("");
+            setShowStatusMessage(false);
+        }
+        , 5000);
+    },[statusMessage]);
 
     /*
     SALVA DENTRO DE 'sessionStorage' OS VALORES CONTIDOS
@@ -56,6 +69,10 @@ export const Globals = ({ children }) => {
             setUserConfig,
             userData,
             setUserData,
+            statusMessage,
+            setStatusMessage,
+            showStatusMessage,
+            setShowStatusMessage,
         }}>
             { children }
         </Context.Provider>

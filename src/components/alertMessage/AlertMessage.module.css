@@ -1,0 +1,39 @@
+/*ANIMAÇÃO DO DA MENSAGEM*/
+@keyframes animate-alert{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+.alertMessage{
+    position:absolute;
+    top:8%;
+    display:flex;
+    align-items:center;
+    gap:0.5em;
+    padding:1em;
+    color:var(--White);
+    border:2px solid var(--White);
+    animation-name: animate-alert;
+    animation-duration:300ms;
+    animation-iteration-count:1;
+}
+.alertMessage button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0.3em;
+    border:none;
+    outline:0;
+    background-color:transparent;
+}
+.alertMessage button svg{
+    color:var(--White);
+    transform:scale(2,2);
+}
+.alertMessage button:hover{
+    cursor:pointer;
+    opacity:0.8;
+}
