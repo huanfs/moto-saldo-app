@@ -4,7 +4,7 @@ import { Context } from "@context/Context.jsx";
 
 import { useNavigate } from "react-router-dom";
 
-import {Authenticate} from "@api/enter/authenticate.js";
+import {Authenticate} from "@services/enter/authenticate.js";
 
 import { FaArrowRight } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";

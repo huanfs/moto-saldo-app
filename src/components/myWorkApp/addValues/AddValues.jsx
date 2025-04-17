@@ -4,7 +4,7 @@ import { Context } from "@context/Context.jsx";
 
 import { UpdateStatistics } from "@utils/update/handleDataUpdating.js";
 
-import { UpdateData } from "@api/updateData/updateData.js";
+import { UpdateData } from "@services/updateData/updateData.js";
 
 import { IoMdClose } from "react-icons/io"; 
 

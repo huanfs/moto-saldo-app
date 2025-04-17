@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import { Context } from "@context/Context.jsx";
 
-import { SetOptions } from "@api/setOptions/setOptions.js";
+import { SetOptions } from "@services/setOptions/setOptions.js";
 
 /*components*/
 import ArrowButton from "@components/arrowButton/ArrowButton.jsx";
