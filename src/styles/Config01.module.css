@@ -54,3 +54,9 @@
 .container section p{
     color:var(--White);
 }
+
+@media(min-width:375px){
+    .container article{
+        width:375px;
+    }
+}
