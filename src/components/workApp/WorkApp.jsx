@@ -2,6 +2,8 @@ import React,{ useContext, useState } from "react";
 
 import { Context } from "@context/Context.jsx";
 
+import { HandleClick } from "@utils/manageSelectedApps/manageSelectedApps.js";
+
 import style from "./WorkApp.module.css";
 
 export default function WorkApp({logotype, name}){
@@ -9,24 +11,13 @@ export default function WorkApp({logotype, name}){
     const[isSelected, setIsSelected] = useState(false);
 
     const { userConfig,setUserConfig } = useContext(Context);
-    /*
-    CRIA NO ESTADO 'userConfig.apps' UM OBJETO
-    COM AS PROPRIEDADES DE 'name', 'total',
-    'distance' e 'time'.
-    */
-
-    function AddApp(event){
-        setUserConfig((prevValue)=>({
-            ...prevValue, apps:[...prevValue.apps, 
-            {"appName":name, "total":0, "distance":0, "time":0}]
-        }));
-        setIsSelected(!isSelected);
-    }
-
+    
     return(
         <div 
         className={style.application}
-        onClick={AddApp}>
+        onClick={(event)=>{
+            HandleClick(event,isSelected,setIsSelected,userConfig,setUserConfig,name)}}
+        >
             <img 
             src={logotype} 
             alt={name}
