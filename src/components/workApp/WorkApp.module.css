@@ -3,10 +3,15 @@
     flex-direction:column;
     gap:0.2em;
     align-items:center;
+    transition:300ms;
 }
 .application img{
     max-width:70px;
     max-height:70px;
     border:2px solid var(--White);
     border-radius:5px;
+}
+.application:hover{
+    cursor:pointer;
+    filter:brightness(0.7);
 }
