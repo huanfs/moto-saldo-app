@@ -37,8 +37,8 @@ export default function Config02(){
                 onChange={(event)=>{ // converte o valor digitado para formato de dinheiro
                 let money  = event.target.value.replace(/\D/g, '');
                 money = new Intl.NumberFormat('pt-br', {
-                    minimunFractionDigits: 2,
-                    maximunFractionDigits: 2, 
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2, 
                 }).format(money / 100);
                 event.target.value = money;
                 }}/>
@@ -47,20 +47,22 @@ export default function Config02(){
             <section>
                 <h2>quantas horas pretende trabalhar</h2>
                 <input 
-                type="text" 
-                placeholder="00:00" 
-                ref={time}
-                maxLength="5"
-                onChange={(event)=>{ // converte o valor digitado para formato de horas/minutos
-                let hours = event.target.value.replace(/\D/g, '');
-                    if (hours.length >= 3) {
-                        hours = hours.slice(0, 2) + ":" + hours.slice(2, 4);
-                    } 
-                    else if (hours.length === 2) {
-                    hours = hours.slice(0, 2) + ":";
-                    }
-            event.target.value = hours;
-                }}/>
+                    type="text" 
+                    placeholder="00:00" 
+                    ref={time}
+                    maxLength="5"
+                    onChange={(event) => {
+                        let value = event.target.value.replace(/\D/g, '');
+
+                        if (value.length <= 2) {
+                        value = value;
+                        } else {
+                        value = value.slice(0, value.length - 2) + ':' + value.slice(-2);
+                        }
+
+                        event.target.value = value;
+                    }}
+                    />
 
             </section>
             <section>
