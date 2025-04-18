@@ -1,10 +1,12 @@
-import React,{ useContext } from "react";
+import React,{ useContext, useState } from "react";
 
 import { Context } from "@context/Context.jsx";
 
 import style from "./WorkApp.module.css";
 
 export default function WorkApp({logotype, name}){
+
+    const[isSelected, setIsSelected] = useState(false);
 
     const { userConfig,setUserConfig } = useContext(Context);
     /*
@@ -13,20 +15,23 @@ export default function WorkApp({logotype, name}){
     'distance' e 'time'.
     */
 
-    function AddApp(){
+    function AddApp(event){
         setUserConfig((prevValue)=>({
             ...prevValue, apps:[...prevValue.apps, 
             {"appName":name, "total":0, "distance":0, "time":0}]
-        }))
+        }));
+        setIsSelected(!isSelected);
     }
 
     return(
         <div 
-        className={style.application} 
+        className={style.application}
         onClick={AddApp}>
             <img 
             src={logotype} 
-            alt={name}/>
+            alt={name}
+            style={{ border: isSelected ? "2px solid var(--PositiveGreen)" : "2px solid var(--White)" }}
+            />
             <span>{name}</span>
         </div>
     )
