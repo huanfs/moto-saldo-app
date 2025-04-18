@@ -9,7 +9,7 @@ export const Globals = ({ children }) => {
         {"logotype":"src/assets/images/99-logo.png", "name":"99"},
         {"logotype":"src/assets/images/ifood-logo.png", "name":"ifood"},
         {"logotype":"src/assets/images/pedeai-logo.png", "name":"pede ai"},
-        {"logotype":"src/assets/images/mercadoenvios-logo.png", "name":"merado en."},
+        {"logotype":"src/assets/images/mercadoenvios-logo.png", "name":"mercado en."},
     ];
 
     /*
