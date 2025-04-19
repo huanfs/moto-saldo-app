@@ -8,7 +8,7 @@ export async function UpdateData(userData) {
     const user = {
         name: userData.userName,
         password: userData.userPassword,
-        data: JSON.parse(sessionStorage.getItem("userData")),
+        data: JSON.stringify(JSON.parse(sessionStorage.getItem("userData"))),
     };
     try {
         const response = await fetch("http://localhost:8182/updateData", {
