@@ -4,6 +4,8 @@ import { Context } from "@context/Context.jsx";
 
 import { useNavigate } from "react-router-dom";
 
+import { LogOut } from "@utils/logOut/logOut.js";
+
 import style from "./Details.module.css";
 
 function Details(){
@@ -61,9 +63,9 @@ function Details(){
                     </span>
             </div>
             <input 
-            type="button" 
-            value="sair do aplicativo"
-            onClick={()=>{navigateTo("/")}}
+                type="button" 
+                value="sair do aplicativo"
+                onClick={()=>{LogOut(navigateTo)}}
             />
         </article>
     )
