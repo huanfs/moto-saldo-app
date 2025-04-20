@@ -125,7 +125,7 @@ async function HandleUpdate(){
             <input ref={time} 
             type="text" 
             maxLength="5"
-            placeholder="horas/minutos gastos"
+            placeholder="tempo gasto"
             onChange={(event)=>{ // função que formata o valor inserido e adiciona ao estado
                 let time = event.target.value.replace(/\D/g,'');
                 if(time.length > 2){
