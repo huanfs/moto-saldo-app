@@ -36,7 +36,7 @@ export default function Config03(){
             </article>
             <section>
                 <Link to="/config02"><ArrowButton direction="left"/></Link>
-                <Link to="/main" onClick={SetOptions(userConfig)}><ArrowButton/></Link>
+                <Link to="/main" onClick={() => SetOptions(userConfig)}><ArrowButton/></Link>
             </section>
         </main>
     )
