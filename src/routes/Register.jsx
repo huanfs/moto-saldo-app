@@ -36,10 +36,16 @@ export default function Register(){
             const isValid = HandleUserRegistration(user.current, password.current);
             const response = await isValid;
             console.log(response);
-            if(response.name && response.password == true){
-                const register = CreateUser(user.current.value, password.current.value, navigateTo);
-                setStatusMessage("Usuário criado!");
-                setShowStatusMessage(true);
+            if(response.name == true && response.password == true){
+                const register = CreateUser(user.current.value, password.current.value);
+                const response = await register;
+                if(response){
+                    console.log("usuario criado");
+                    setStatusMessage("Usuário criado!");
+                    setShowStatusMessage(true);
+                    navigateTo("/enter");
+                }
+
             }
         }
         catch(err){

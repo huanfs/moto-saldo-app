@@ -4,7 +4,7 @@ RECEBE AS REFERÊNCIAS DOS ELEMENTOS INPUT E A VARIAVEL
 QUE ARMAZENA O HOOK 'useNavigate' PARA REALIZAR O CAD
 -ASTRO DO NOVO USUÁRIO.
 */
-export async function CreateUser(name, password, navigate){
+export async function CreateUser(name, password){
     try{
         const data = {
             name: name,
@@ -13,16 +13,17 @@ export async function CreateUser(name, password, navigate){
         const create = await fetch("http://localhost:8182/createUser",{
             method:"POST",
             headers:{
-                "Content-Type":"Application/json",
+                "Content-Type":"application/json",
             },
             body: JSON.stringify(data),
         });
         if(create.status == 200){
-            console.log("usuario criado")
-            navigate("/enter"); //navega para a rota 'enter'.
+            console.log("usuario criado");
+            return true;
         }
     }
     catch(err){
-        console.log("erro ao criar usuário")
+        console.log("erro ao criar usuário");
+        return false;
     }
 }
