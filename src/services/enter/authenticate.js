@@ -32,14 +32,20 @@ export async function Authenticate(name, password, setUserConfig, setUserData, n
             else if(typeof(data.data) == "string"){
                 setUserData(JSON.parse(data.data))
             }
-           navigate("/main");
+           setInterval(() => {
+            navigate("/main");
+           },2000);
         }
         else if(!data.data){ // caso o usuário seja novo, procede para a página config01.jsx para iniciar configurações de conta
-            navigate("/config01");
+            setInterval(() => {
+                navigate("/config01");
+            },2000);
         }
+        return searchUser;
     }
 }
     catch (err) {
-        console.log("erro inesperado com a autenticação " + err)
+        console.log("erro inesperado com a autenticação " + err);
+        return searchUser;
     }
 }
