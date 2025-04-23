@@ -47,11 +47,11 @@ export default function Enter(){
                 setUserData,
                 navigateTo,
             );
-            if(authenticate.status == 200){
+            if(authenticate == 200){
                 setStatusMessage("Autenticado com sucesso");
                 setShowStatusMessage(true);
             }
-            if(authenticate.status != 200){
+            if(authenticate != 200){
                 setStatusMessage("Usuário não encontrado");
                 setShowStatusMessage(true);
             }
