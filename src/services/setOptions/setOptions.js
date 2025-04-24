@@ -28,5 +28,6 @@ export async function SetOptions(userConfig, navigateTo, setIsLoading){
     }
     finally{
         setIsLoading(false);
+        sessionStorage.setItem("userData", JSON.stringify(userConfig));
     }
 }
