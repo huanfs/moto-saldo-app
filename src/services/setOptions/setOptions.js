@@ -3,7 +3,7 @@
 ENVIA PARA O BANCO DE DADOS O ESTADO 'userConfig'
 NO FORMADO DE STRING JSON.
 */
-export async function SetOptions(userConfig, navigateTo, setIsLoading){
+export async function SetOptions(userConfig, navigateTo, setIsLoading, userData, setUserData){
     setIsLoading(true);
     try{
         const saveOptions = await fetch("http://localhost:8182/createOptions",{
@@ -28,6 +28,6 @@ export async function SetOptions(userConfig, navigateTo, setIsLoading){
     }
     finally{
         setIsLoading(false);
-        sessionStorage.setItem("userData", JSON.stringify(userConfig));
+        userData ? setUserData(userConfig) : sessionStorage.setItem("userData", JSON.stringify(userConfig));
     }
 }
