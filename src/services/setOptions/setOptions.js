@@ -3,18 +3,30 @@
 ENVIA PARA O BANCO DE DADOS O ESTADO 'userConfig'
 NO FORMADO DE STRING JSON.
 */
-export async function SetOptions(userConfig){
+export async function SetOptions(userConfig, navigateTo, setIsLoading){
+    setIsLoading(true);
     try{
         const saveOptions = await fetch("http://localhost:8182/createOptions",{
-            method:"POST",
+            method:"PUT",
             headers:{
                 "Content-Type":"Application/json",
             },
             body:JSON.stringify(userConfig),
             mode:"cors",
         });
+        if(saveOptions){
+            setTimeout(()=>{
+                navigateTo("/main");
+            }, 1000);
+        }
+        else{
+            console.log("não foi possivel salvar as configurações");
+        }
     }
     catch(err){
         console.log("erro ao salvar configurações " + err)
+    }
+    finally{
+        setIsLoading(false);
     }
 }
