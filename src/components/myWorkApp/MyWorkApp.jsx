@@ -37,7 +37,7 @@ function MyWorkApp({appLogo}){
         <img src={imagem ? imagem : null}/>
         <span>
             {
-                total
+                total ? total.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2}) : "00,00"
             }
         </span>
         <button type="button" onClick={()=>{setAddNewValue(true)}}>

@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 
 import { Context } from "@context/Context.jsx";
 
@@ -12,9 +12,13 @@ import { FaLock } from "react-icons/fa";
 
 import AlertMessage from "@components/alertMessage/AlertMessage.jsx";
 
+import Loading from "@components/loading/Loading.jsx";
+
 import style from "@styles/Enter.module.css";
 
 export default function Enter(){
+
+    const[isLoading, setIsLoading] = useState(false);
 
     const{ 
         setUserData, 
@@ -34,22 +38,31 @@ export default function Enter(){
     REALIZA A AUTENTICAÇÃO DO USUÁRIO
     */
     async function LogIn(){
+        setIsLoading(true);
         try{
-            const authenticate = Authenticate(
+            const authenticate = await Authenticate(
                 userName.current, 
                 password.current,
                 setUserConfig,
                 setUserData,
                 navigateTo,
             );
-            if(authenticate.status != 200){
-                setStatusMessage("Usuário não encontrado")
+            if(authenticate == 200){
+                setStatusMessage("Autenticado com sucesso");
+                setShowStatusMessage(true);
+            }
+            if(authenticate != 200){
+                setStatusMessage("Usuário não encontrado");
                 setShowStatusMessage(true);
             }
         }
         catch(err){
+            console.log(err);
             setStatusMessage("Erro ao autenticar o usuário");
             setShowStatusMessage(true);
+        }
+        finally{
+            setIsLoading(false);
         }
     }
 
@@ -77,6 +90,9 @@ export default function Enter(){
     
     return(
         <main className={style.container}>
+            {
+                isLoading && <Loading/>
+            }
             {
                 showStatusMessage && <AlertMessage msg={statusMessage} action={setShowStatusMessage}/>
             }

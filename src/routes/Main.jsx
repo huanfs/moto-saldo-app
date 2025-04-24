@@ -5,6 +5,8 @@ import React,{ useContext, useEffect  } from "react";
     import MyWorkApp from "@components/myWorkApp/MyWorkApp.jsx";
 /*componentes*/
 
+import { BringData } from "@services/bringData/bringData.js";
+
 import { Context } from "@context/Context.jsx"; // importação do contexto
 
 import style from "@styles/Main.module.css"; // estilização
@@ -13,7 +15,11 @@ export default function Main(){
     
     const { userData, setUserData, userConfig } = useContext(Context); // usando o contexto
 
-    useEffect(() => {
+    useEffect(()=>{
+        BringData({userData, setUserData, userConfig});
+    },[setUserData]);
+
+    /*useEffect(() => {
         let dataPayLoad = {};
         const fetchData = async () => {
             const storedData = sessionStorage.getItem("userData");
@@ -55,14 +61,14 @@ export default function Main(){
             }
         };
         fetchData();
-    }, [setUserData]);
+    }, [setUserData]);*/
 
 
     return(
         <main className={style.container}>
             <Header/>
             <section>
-                {
+                {/*
                     typeof(userData) == "object" && userData.apps.map((item, index)=>{
                         return(
                             <MyWorkApp 
@@ -70,6 +76,14 @@ export default function Main(){
                             appLogo={item.appName}/>
                         )
                     })
+                */}
+                {
+                    userData?.apps?.map((item, index) => (
+                        <MyWorkApp 
+                            key={index}
+                            appLogo={item.appName}
+                        />
+                    ))  
                 }
             </section>
         </main>
