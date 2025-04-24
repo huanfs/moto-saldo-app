@@ -22,7 +22,7 @@ export default function Config03(){
 
     const[isLoading, setIsLoading] = useState(false);
 
-    const { userConfig } = useContext(Context);
+    const { userData, setUserData, userConfig } = useContext(Context);
 
     return(
         <main className={style.container}>
@@ -47,7 +47,7 @@ export default function Config03(){
             <section>
                 <Link to="/config02"><ArrowButton direction="left"/></Link>
                 {/*<Link to="/main" onClick={() => SetOptions(userConfig)}><ArrowButton/></Link>*/}
-                <button type="button" className={style.arrow} onClick={() => {SetOptions(userConfig, navigateTo, setIsLoading)}}>
+                <button type="button" className={style.arrow} onClick={() => {SetOptions(userConfig, navigateTo, setIsLoading, userData, setUserData)}}>
                     <FaArrowRight/>
                 </button>
             </section>
