@@ -10,8 +10,6 @@ componente add values deve retornar algum sinal de falha ou sucesso ao adicionar
 
 no componente Enter.jsx reformular o dialogo de autocompletar senha
 
-*ao criar novo usuario não o renderiza de imediato sendo necessario sair e entrar novamente o erro esta em config03 onde navega para main antes da requisição*
-
 adicionar efeitos hover
 
 # refatorar o código inteiro
