@@ -10,8 +10,6 @@ export async function HandleUserRegistration(user, password){
         "password":false,
     };
 
-    console.log(user, password)
-
     if(user.value.length < 6){
         user.value="";
         user.placeholder="deve ter 6 letras!";

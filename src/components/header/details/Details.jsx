@@ -55,7 +55,7 @@ function Details(){
                 </span>
             </div>
             <div>
-                <p>horas trabalhadas</p>
+                <p>tempo</p>
                 <span>
                     {
                         details.time != 0 ? `${details.time} H` : "00:00"
