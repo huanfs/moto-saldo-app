@@ -1,10 +1,10 @@
-/*animações da tela inicial*/
+/*Animação de entrada esclarecimento suave*/
 @keyframes animation-fade-out{
     from{
-        opacity:0;
+        filter:brightness(0.2);
     }
     to{
-        opacity:1;
+        filter:brightness(1);
     }
 }
 @keyframes animation-move-motorcicle{

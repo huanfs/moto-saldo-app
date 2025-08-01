@@ -1,6 +1,18 @@
+/*Animação de entrada esclarecimento suave*/
+@keyframes animation-fade-out{
+    from{
+        filter:brightness(0.2);
+    }
+    to{
+        filter:brightness(1);
+    }
+}
 .container{
     background-color:var(--Black);
     color:var(--White);
+    animation-name: animation-fade-out;
+    animation-duration:300ms;
+    animation-iteration-count:1;
 }
 .container h1{
     font-size:3em;
