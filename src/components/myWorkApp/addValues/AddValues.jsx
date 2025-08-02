@@ -6,11 +6,23 @@ import { UpdateStatistics } from "@utils/update/handleDataUpdating.js";
 
 import { UpdateData } from "@services/updateData/updateData.js";
 
+/*importação das funções formatadoras*/
+import { FormatHours } from "@utils/format/formatHours.js";
+import { FormatKilometers } from "@utils/format/formatKilometers.js";
+import { FormatMoney } from "@utils/format/formatMoney.js";
+
 import { IoMdClose } from "react-icons/io"; 
 
 import style from "./AddValues.module.css";
 
 function AddValues({ close, appImage, alt }){
+
+    /*Estados dos inputs*/
+    const [ammount, setAmmount] = useState("");
+    const [distanceTraveled, setDistanceTraveled] = useState("");
+    const [hours, setHours] = useState("");
+
+    /*Estados dos inputs*/
 
     const { userData, setUserData } = useContext(Context);
 
@@ -87,61 +99,45 @@ async function HandleUpdate(){
 
             <img ref={appIcon} src={appImage} alt={alt}/>
 
-            <input 
+            <input
             ref={money}
-            type="text" 
-            placeholder="ganhos" 
+            type="text"
+            placeholder="ganhos"
             maxLength="8"
-            onChange={((event)=>{ // função que formata o valor inserido e adiciona ao estado
-                let money = event.target.value.replace(/\D/g, '');
-                if(money.length > 2){
-                    money = money.slice(0, 2) + "," + money.slice(2, 4);
-                }
-                event.target.value = money;
-
-                setAddNewValues((prevValue)=>({
-                    ...prevValue,
-                    money:parseFloat(money.replace(",","."))
-                }))
-            })}/>
+            value={ammount}
+            onChange={(event)=>{
+                const formattedMoney = FormatMoney(event.target.value, setAddNewValues);
+                setAmmount(formattedMoney);
+            }}
+            />
 
             <input 
             ref={distance} 
             type="text" 
             maxLength="4"
+            value={distanceTraveled}
             placeholder="KM/percorridos"
-            onChange={(event)=>{ // função que formata o valor inserido e adiciona ao estado
-                let distance = event.target.value.replace(/\D/g,'');
-                if(distance.length > 2){
-                    distance = distance.slice(0, 2) + "." + distance.slice(2, 3)
-                }
-                event.target.value = distance;
-                setAddNewValues((prevValue)=>({
-                    ...prevValue,
-                    distance:parseFloat(distance)
-                }))
-            }}/>
+            onChange={(event)=>{
+                const formattedKilometers = FormatKilometers(event.target.value, setAddNewValues);
+                setDistanceTraveled(formattedKilometers);
+            }}
+            />
 
-            <input ref={time} 
-            type="text" 
+            <input
+            ref={time}
+            type="text"
             maxLength="5"
+            value={hours}
             placeholder="tempo gasto"
-            onChange={(event)=>{ // função que formata o valor inserido e adiciona ao estado
-                let time = event.target.value.replace(/\D/g,'');
-                if(time.length > 2){
-                    time = time.slice(0, 2) + ":" + time.slice(2, 4)
-                }
-                event.target.value = time
-
-                setAddNewValues((prevValue)=>({
-                    ...prevValue,
-                    time:parseFloat(time.replace(":","."))
-                }))
-            }}/>
+            onChange={(event) => {
+                const formattedValue = FormatHours(event.target.value, setAddNewValues);
+                setHours(formattedValue);
+            }}
+            />
 
             <span>
                 {
-                    money.current && money.current.value ? money.current.value : "00,00"
+                    ammount && ammount != "" ? ammount : "00,00"
                 }
             </span>
 
@@ -150,7 +146,8 @@ async function HandleUpdate(){
             value="adicionar" 
             onClick={HandleUpdate} 
             disabled={btnIsDisabled}
-            style={{ opacity: btnIsDisabled ? 0.8 : 1 }}/>
+            style={{ opacity: btnIsDisabled ? 0.8 : 1 }}
+            />
         </article>
     )
 }
