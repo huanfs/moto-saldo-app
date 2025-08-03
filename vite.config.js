@@ -5,7 +5,7 @@ import path from "path"
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-//  base: "/moto-saldo-app/",
+  base: "/moto-saldo-app/",
   resolve: {
     alias: {
       "@components":path.resolve(__dirname, "./src/components"),
