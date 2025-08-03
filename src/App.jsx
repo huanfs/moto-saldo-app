@@ -1,6 +1,6 @@
 import React from "react";  //****REACT*/
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";    //****REACT-ROUTER*/
+import { HashRouter as Router, Routes, Route } from "react-router-dom";    //****REACT-ROUTER*/
 
 import { Globals } from "@context/Context.jsx";    //****CONTEXT*/
 
@@ -19,7 +19,7 @@ import "./App.css";
 export function App(){
   return(
     <Globals>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<HomePage/>}/>
           <Route path="/enter" element={<Enter/>}/>
@@ -29,7 +29,7 @@ export function App(){
           <Route path="/config03" element={<Config03/>}/>
           <Route path="/main" element={<Main/>}/>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </Globals>
   )
 }
