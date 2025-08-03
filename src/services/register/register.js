@@ -1,4 +1,4 @@
-
+const API_URL = import.meta.env.VITE_API_URL;
 /*
 RECEBE AS REFERÊNCIAS DOS ELEMENTOS INPUT E A VARIAVEL
 QUE ARMAZENA O HOOK 'useNavigate' PARA REALIZAR O CAD
@@ -10,7 +10,7 @@ export async function CreateUser(name, password){
             name: name,
             password: password,
         };
-        const create = await fetch("http://localhost:8182/createUser",{
+        const create = await fetch(`${API_URL}createUser`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
