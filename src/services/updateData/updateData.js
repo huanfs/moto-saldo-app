@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL;
 /*
     REALIZA UMA CHAMADA PARA A API PASSANDO VALORES DE 'name' e 'password'
     QUE SERÃO UTILIZADOS PARA BUSCAR UM USUÁRIO NO BANCO DE DADOS ENTÃO ATU
@@ -11,7 +12,7 @@ export async function UpdateData(userData) {
         data: JSON.stringify(JSON.parse(sessionStorage.getItem("userData"))),
     };
     try {
-        const response = await fetch("http://localhost:8182/updateData", {
+        const response = await fetch(`${API_URL}updateData`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

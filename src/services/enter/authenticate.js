@@ -1,4 +1,4 @@
-
+const API_URL = import.meta.env.VITE_API_URL;
 /*
 BUSCA UM USUÁRIO EXISTENTE NO BANCO DE DADOS
 ATRAVÉS DOS PARÂMETROS DE NOME E SENHA, RETORNA
@@ -10,7 +10,7 @@ export async function Authenticate(name, password, setUserConfig, setUserData, n
         name: name.value,
         password: password.value,
     };
-    const searchUser = await fetch("http://localhost:8182/authenticate",{
+    const searchUser = await fetch(`${API_URL}authenticate`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",

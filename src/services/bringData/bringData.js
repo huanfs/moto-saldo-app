@@ -1,3 +1,4 @@
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function BringData({userData, setUserData, userConfig}) {
     let credentials = {};
@@ -22,7 +23,7 @@ export async function BringData({userData, setUserData, userConfig}) {
                     else{
                         console.log("Credenciais ausentes")
                         
-                const response = await fetch("http://localhost:8182/getData", {
+                const response = await fetch(`${API_URL}getData`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
