@@ -6,7 +6,7 @@ NO FORMADO DE STRING JSON.
 export async function SetOptions(userConfig, navigateTo, setIsLoading, userData, setUserData){
     setIsLoading(true);
     try{
-        const saveOptions = await fetch(`${API_URL}createOPtions`,{
+        const saveOptions = await fetch(`${API_URL}createOptions`,{
             method:"PUT",
             headers:{
                 "Content-Type":"Application/json",

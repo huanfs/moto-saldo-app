@@ -14,6 +14,10 @@ adicionar efeitos hover
 
 o componente add values pode ter funcoes auxiliares para lidar com a mudança do valor no input
 
+por algum motivo estranho, preciso fazer o login 2x para que entre corretamente, as imagens estão quebradas tambem, tudo isto no github
+
 # refatorar o código inteiro
+
+
 
 
