@@ -5,11 +5,11 @@ export const Context = createContext();
 export const Globals = ({ children }) => {
     
     const logo = [
-        {"logotype":"/images/uber-logo.png", "name":"uber"},
-        {"logotype":"/images/99-logo.png", "name":"99"},
-        {"logotype":"/images/ifood-logo.png", "name":"ifood"},
-        {"logotype":"/images/pedeai-logo.png", "name":"pede ai"},
-        {"logotype":"/images/mercadoenvios-logo.png", "name":"mercado en."},
+        {"logotype":"images/uber-logo.png", "name":"uber"},
+        {"logotype":"images/99-logo.png", "name":"99"},
+        {"logotype":"images/ifood-logo.png", "name":"ifood"},
+        {"logotype":"images/pedeai-logo.png", "name":"pede ai"},
+        {"logotype":"images/mercadoenvios-logo.png", "name":"mercado en."},
     ];
 
     /*
