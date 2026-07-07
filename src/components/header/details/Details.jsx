@@ -29,7 +29,7 @@ function Details(){
             userData.apps.forEach((item) => { // o loop mapeia cada propriedade correspondente e insere o valor 
                 total += item.total;          // dentro da variável.
                 distance += item.distance;
-                time += item.time;
+                time += Number(item.time);
             });
             // Atualiza o estado com os valores acumulados de cada variável
             setDetails({ total, distance, time });
@@ -42,7 +42,7 @@ function Details(){
                 <p>ganhos totais</p>
                 <span>
                     {
-                        details.total != 0 ? `${details.total.toLocaleString('pt-BR', {minimunFractionDigits:2, maximunFractionDigits:2})} R$` : "00,00"
+                        details.total != 0 ? `${details.total.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2})} R$` : "00,00"
                     }
                     </span>
             </div>
@@ -57,8 +57,8 @@ function Details(){
             <div>
                 <p>tempo</p>
                 <span>
-                    {
-                        details.time != 0 ? `${details.time} H` : "00:00"
+                    {  
+                        `${String(Math.floor(details.time / 60)).padStart(2, "0")}:${String(details.time % 60).padStart(2, "0")}`
                     }
                     </span>
             </div>

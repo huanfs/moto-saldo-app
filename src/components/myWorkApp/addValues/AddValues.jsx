@@ -126,9 +126,9 @@ async function HandleUpdate(){
             <input
             ref={time}
             type="text"
-            maxLength="5"
+            maxLength="2"
             value={hours}
-            placeholder="tempo gasto"
+            placeholder="tempo gasto (min)"
             onChange={(event) => {
                 const formattedValue = FormatHours(event.target.value, setAddNewValues);
                 setHours(formattedValue);
