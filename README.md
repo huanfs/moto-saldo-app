@@ -16,6 +16,7 @@ Gerenciador de lucros e despesa para motoboys autônomos.
 - Criação de perfil selecionando plataformas de trabalho
 - Grenciamento de ganhos, distancia percorrida e horas trabalhadas
 - Recuperação de conta [ em desenvolvimento ]
+- Geração de PDF com detalhamento mensal/diário
 ## Stack
 
 - vite + react

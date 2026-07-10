@@ -12,9 +12,6 @@ export const Globals = ({ children }) => {
         {"logotype":"images/mercadoenvios-logo.png", "name":"mercado en."},
     ];
 
-    /*
-    ESTADO QUE ARMAZENA AS CONFIGURAÇÕES E DADOS DE UM NOVO USUÁRIO
-    */
     const[userConfig, setUserConfig] = useState({
         "userName":"",
         "userPassword":"",
@@ -26,21 +23,14 @@ export const Globals = ({ children }) => {
         "choice":null,
     });
 
-    /*
-    CRIA UM ESTADO COM OS VALORES CONTIDOS DENTRO DE 'sessionStorage.userData'
-    CONVERTENDO-O EM OBJETO. DO CONTRÁRIO, DEFINE O ESTADO COM OS VALORES CONTIDOS
-    DENTRO DO ESTADO 'userConfig'.
-    */
     const[userData, setUserData] = useState(() => {
         const storedData = sessionStorage.getItem("userData");
         return storedData ? JSON.parse(storedData) : userConfig;
     });
 
-    /*ARMAZENA MENSAGENS DE STATUS DA REQUISIÇÃO À API E SE DEVE SER EXIBIDA*/
     const[statusMessage, setStatusMessage] = useState("");
     const[showStatusMessage, setShowStatusMessage] = useState(false);
 
-    /*APAGA A MENSAGEM DO ESTADO APÓS UM TEMPO*/
     useEffect(()=>{
         statusMessage != "" && setTimeout(() => {
             setStatusMessage("");
@@ -49,11 +39,6 @@ export const Globals = ({ children }) => {
         , 5000);
     },[statusMessage]);
 
-    /*
-    SALVA DENTRO DE 'sessionStorage' OS VALORES CONTIDOS
-    NO ESTADO 'userData' EM FORMATO DE STRING JSON, DO CONTRÁRIO
-    REMOVE O ITEM DE 'sessionStorage'.
-    */
     useEffect(() => {
         if (userData) {
             sessionStorage.setItem("userData", JSON.stringify(userData));
