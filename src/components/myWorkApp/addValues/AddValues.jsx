@@ -79,7 +79,7 @@ async function HandleUpdate(){
     return(
         <article className={style.new}> 
         {
-            errorMessage != "" && <AlertMessage msg="não foi possível adicionar" action={setError}/>
+            error != "" && <AlertMessage msg="não foi possível adicionar" action={setError}/>
         }
             <button 
             type="button"
