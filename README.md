@@ -9,7 +9,7 @@ Facilitar o controle financeiro e operacional do motoboy, permitindo análise de
 
 ## Tecnologias Utilizadas
 - **Frontend:** React 18, Vite, React Router, React Icons
-- **Backend:** Express.js (API REST, não incluso neste repositório)
+- **Backend:** Express.js (API REST, não incluso neste repositório ver em [ver em](https://github.com/huanfs/moto-saldo-api))
 - **Banco de Dados:** PostgreSQL
 - **Outros:** Context API, CSS Modules
 
@@ -50,30 +50,7 @@ Facilitar o controle financeiro e operacional do motoboy, permitindo análise de
 - Integração direta com APIs das plataformas de entrega
 
 ---
-Desenvolvido para facilitar o dia a dia do motoboy autônomo, com foco em usabilidade, performance e escalabilidade.
 
-
-Gerenciador de lucros e despesa para motoboys autônomos.
-
-
-
-
-
-
-
-## Funcionalidades
-
-- Registro de novo usuário
-- Login
-- Criação de perfil selecionando plataformas de trabalho
-- Grenciamento de ganhos, distancia percorrida e horas trabalhadas
-- Recuperação de conta [ em desenvolvimento ]
-- Geração de PDF com detalhamento mensal/diário
-## Stack
-
-- vite + react
-- express.js
-- postgree
 
 
 
