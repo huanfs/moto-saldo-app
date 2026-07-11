@@ -52,6 +52,11 @@
 }
 .container section p{
     cursor:pointer;
+
+    &:hover{
+        cursor:pointer;
+        filter:brightness(0.5);
+    }
 }
 .container section button{
     width:120px;
@@ -66,6 +71,11 @@
     border-radius:10px;
     background-color:transparent;
     color:var(--White);
+
+    &:hover{
+        cursor:pointer;
+        filter:brightness(0.5);
+    }
 }
 .container section button svg{
     width:20px;

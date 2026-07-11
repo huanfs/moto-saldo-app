@@ -4,6 +4,11 @@
     background-color:transparent;
     position:relative;
     z-index:3;
+
+    &:hover{
+        cursor:pointer;
+        filter:brightness(0.5);
+    }
     
 }
 .btnMenu svg{

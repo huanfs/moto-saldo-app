@@ -73,6 +73,11 @@
     outline:0;
     border-radius:10px;
     background-color:transparent;
+
+    &:hover{
+        cursor:pointer;
+        filter:brightness(0.5);
+    }
 }
 .container section button{
     display:flex;
